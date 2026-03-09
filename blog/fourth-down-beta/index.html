@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A First Pass at the Fourth Down Simulator | Sportsecon</title>
+  <meta name="description" content="Starter blog post for the Sportsecon fourth down simulator beta.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body data-page="blog">
+  <header class="site-header">
+    <div class="shell site-header__inner">
+      <a class="brand" href="/">Sportsecon</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/tools/">Tools</a>
+        <a href="/blog/">Blog</a>
+        <a href="/mark/">Mark</a>
+        <a href="/about/">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="article">
+        <p class="eyebrow">Starter post</p>
+        <h1>A first pass at the Fourth Down Simulator</h1>
+        <p class="post-meta">March 9, 2026</p>
+        <p class="page-intro">
+          The first tool on Sportsecon is intentionally modest: it is less a final answer machine than a compact way
+          to make fourth-down tradeoffs visible and discussable.
+        </p>
+      </div>
+    </section>
+
+    <article class="article">
+      <p>
+        A beta site benefits from having one concrete thing it can actually do. For Sportsecon, the right starting point is a
+        fourth-down simulator because it sits at the intersection of incentives, game management, and quantitative reasoning.
+      </p>
+      <h2>Why start simple</h2>
+      <p>
+        There is a large gap between a polished public-facing simulation product and a useful first-pass decision model.
+        The current version uses a lightweight expected-points framework, conversion estimates by distance, field-goal success bands,
+        and small late-game nudges. That is enough to create a coherent recommendation without pretending to be a full win-probability engine.
+      </p>
+      <h2>What the beta is for</h2>
+      <p>
+        The purpose of this tool is to support exploration. A coach, fan, or analyst can test a situation, see how the recommendation changes,
+        and quickly understand which assumptions are driving the result.
+      </p>
+      <p>
+        Over time, the model can become more granular. It can also remain useful even if it stays lightweight, provided it remains transparent.
+      </p>
+      <p>
+        <a class="text-link" href="/tools/fourth-down/">Try the Fourth Down Simulator</a>
+      </p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell site-footer__inner">
+      <p>Sportsecon is an evolving sports economics project.</p>
+      <p><a href="/blog/">Blog</a> <span class="footer-separator">/</span> <a href="/tools/fourth-down/">Simulator</a></p>
+    </div>
+  </footer>
+
+  <script src="/assets/site.js"></script>
+</body>
+</html>
