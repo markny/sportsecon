@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#0f172a"/>
+
+  <!-- SE text -->
+  <text x="10" y="50"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="28"
+        font-weight="700"
+        fill="#ffffff"
+        letter-spacing="-2">SE</text>
+
+  <!-- football -->
+  <ellipse cx="46" cy="24" rx="12" ry="7" fill="#a16207" transform="rotate(-25 46 24)"/>
+
+  <!-- football laces -->
+  <line x1="41" y1="22" x2="51" y2="26" stroke="#ffffff" stroke-width="2" transform="rotate(-25 46 24)"/>
+  <line x1="43" y1="21" x2="43" y2="27" stroke="#ffffff" stroke-width="1.5"/>
+  <line x1="46" y1="21" x2="46" y2="27" stroke="#ffffff" stroke-width="1.5"/>
+  <line x1="49" y1="21" x2="49" y2="27" stroke="#ffffff" stroke-width="1.5"/>
+</svg>
