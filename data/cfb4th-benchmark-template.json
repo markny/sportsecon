@@ -1,0 +1,36 @@
+{
+  "notes": "Fill target values from cfb4th outputs for parity testing.",
+  "fields": {
+    "yardLine": "1-99 scale from own goal line",
+    "yardsToGo": "yards to first down",
+    "quarter": "1-4",
+    "timeRemaining": "MM:SS remaining in quarter",
+    "scoreDifferential": "offense score - defense score"
+  },
+  "scenarios": [
+    {
+      "id": "S1",
+      "label": "Opp 42, 4th and 4, down 3 in Q4",
+      "input": { "yardLine": 58, "yardsToGo": 4, "quarter": 4, "timeRemaining": "08:42", "scoreDifferential": -3 },
+      "cfb4thTarget": { "recommendation": null, "goWinProb": null, "puntWinProb": null, "fgWinProb": null }
+    },
+    {
+      "id": "S2",
+      "label": "Own 45, 4th and 1, down 6 late Q4",
+      "input": { "yardLine": 45, "yardsToGo": 1, "quarter": 4, "timeRemaining": "01:40", "scoreDifferential": -6 },
+      "cfb4thTarget": { "recommendation": null, "goWinProb": null, "puntWinProb": null, "fgWinProb": null }
+    },
+    {
+      "id": "S3",
+      "label": "Opp 18, 4th and 3, up 1 late Q4",
+      "input": { "yardLine": 82, "yardsToGo": 3, "quarter": 4, "timeRemaining": "02:15", "scoreDifferential": 1 },
+      "cfb4thTarget": { "recommendation": null, "goWinProb": null, "puntWinProb": null, "fgWinProb": null }
+    },
+    {
+      "id": "S4",
+      "label": "Midfield, 4th and 2, tied Q2",
+      "input": { "yardLine": 50, "yardsToGo": 2, "quarter": 2, "timeRemaining": "07:30", "scoreDifferential": 0 },
+      "cfb4thTarget": { "recommendation": null, "goWinProb": null, "puntWinProb": null, "fgWinProb": null }
+    }
+  ]
+}

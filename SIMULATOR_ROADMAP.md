@@ -53,3 +53,4 @@ Upgrade the current fourth-down tool from lightweight expected-points guidance t
 - 2026-03-10: Roadmap initialized.
 - 2026-03-10: Phase 0 completed. Added baseline model notes (`docs/simulator-model-notes-v1.md`) and scenario baseline outputs (`data/simulator-baseline-v1.json`).
 - 2026-03-10: Strategy update — decided to adopt `cfb4th` methodology and implement a Sportsecon wrapper approach (see `docs/cfb4th-adoption-plan.md`).
+- 2026-03-11: Added parity scaffolding (`data/cfb4th-benchmark-template.json`, `scripts/simulator-parity-check.mjs`) to benchmark Sportsecon outputs against cfb4th targets.
