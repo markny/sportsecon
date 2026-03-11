@@ -3,7 +3,9 @@ import vm from "node:vm";
 
 const base = process.cwd();
 const modelPath = `${base}/assets/fourth-down-model.js`;
-const benchmarkPath = `${base}/data/cfb4th-benchmark-template.json`;
+const benchmarkPath = fs.existsSync(`${base}/data/cfb4th-benchmark-targets.json`)
+  ? `${base}/data/cfb4th-benchmark-targets.json`
+  : `${base}/data/cfb4th-benchmark-template.json`;
 
 const modelCode = fs.readFileSync(modelPath, "utf8");
 const benchmark = JSON.parse(fs.readFileSync(benchmarkPath, "utf8"));
@@ -46,4 +48,4 @@ for (const s of benchmark.scenarios) {
   console.log("");
 }
 
-console.log("Done. Populate data/cfb4th-benchmark-template.json with cfb4th outputs for full parity checks.\n");
+console.log(`Done. Using benchmark file: ${benchmarkPath.replace(base + '/', '')}.\n`);

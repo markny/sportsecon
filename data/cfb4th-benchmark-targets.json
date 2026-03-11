@@ -1,0 +1,88 @@
+{
+  "notes": "Populated using cfb4th::add_4th_probs with neutral placeholder team inputs (Utah vs BYU), 2026-03-11.",
+  "fields": {
+    "yardLine": "1-99 scale from own goal line",
+    "yardsToGo": "yards to first down",
+    "quarter": "1-4",
+    "timeRemaining": "MM:SS remaining in quarter",
+    "scoreDifferential": "offense score - defense score"
+  },
+  "scenarios": [
+    {
+      "id": "S1",
+      "label": "Opp 42, 4th and 4, down 3 in Q4",
+      "input": {
+        "yardLine": 58,
+        "yardsToGo": 4,
+        "quarter": 4,
+        "timeRemaining": "08:42",
+        "scoreDifferential": -3
+      },
+      "cfb4thTarget": {
+        "recommendation": "Go for It",
+        "goWinProb": 0.438,
+        "puntWinProb": 0.3565,
+        "fgWinProb": 0.3581,
+        "firstDownProb": 0.483,
+        "fgMakeProb": 0.2686
+      }
+    },
+    {
+      "id": "S2",
+      "label": "Own 45, 4th and 1, down 6 late Q4",
+      "input": {
+        "yardLine": 45,
+        "yardsToGo": 1,
+        "quarter": 4,
+        "timeRemaining": "01:40",
+        "scoreDifferential": -6
+      },
+      "cfb4thTarget": {
+        "recommendation": "Go for It",
+        "goWinProb": 0.18,
+        "puntWinProb": 0.0364,
+        "fgWinProb": 0.0291,
+        "firstDownProb": 0.7304,
+        "fgMakeProb": 0
+      }
+    },
+    {
+      "id": "S3",
+      "label": "Opp 18, 4th and 3, up 1 late Q4",
+      "input": {
+        "yardLine": 82,
+        "yardsToGo": 3,
+        "quarter": 4,
+        "timeRemaining": "02:15",
+        "scoreDifferential": 1
+      },
+      "cfb4thTarget": {
+        "recommendation": "Go for It",
+        "goWinProb": 0.797,
+        "puntWinProb": "NA",
+        "fgWinProb": 0.7571,
+        "firstDownProb": 0.5048,
+        "fgMakeProb": 0.7555
+      }
+    },
+    {
+      "id": "S4",
+      "label": "Midfield, 4th and 2, tied Q2",
+      "input": {
+        "yardLine": 50,
+        "yardsToGo": 2,
+        "quarter": 2,
+        "timeRemaining": "07:30",
+        "scoreDifferential": 0
+      },
+      "cfb4thTarget": {
+        "recommendation": "Punt",
+        "goWinProb": 0.592,
+        "puntWinProb": 0.5952,
+        "fgWinProb": 0.5084,
+        "firstDownProb": 0.5868,
+        "fgMakeProb": 0
+      }
+    }
+  ]
+}
