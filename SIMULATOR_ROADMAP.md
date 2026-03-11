@@ -15,10 +15,10 @@ Upgrade the current fourth-down tool from lightweight expected-points guidance t
 - [x] Define baseline outputs for comparison (current recommendation + score deltas).
 
 ## Phase 1 — Better Decision Core (fast upgrade)
-- [ ] Improve go-for-it conversion model by yards-to-go and field context.
-- [ ] Improve FG make probability by kick distance bands.
-- [ ] Improve punt outcome model (net + touchback likelihood).
-- [ ] Add clearer output explanations: "why this recommendation".
+- [ ] Adopt `cfb4th` methodology as primary reference implementation (avoid reinventing baseline logic).
+- [ ] Choose integration path: direct port, precomputed lookup tables, or hybrid wrapper.
+- [ ] Implement go / punt / FG logic aligned with `cfb4th` assumptions where feasible.
+- [ ] Add clearer output explanations: "why this recommendation" plus model provenance note.
 - [ ] Ship as v1.1 with changelog note.
 
 ## Phase 2 — Win Probability Layer
@@ -52,3 +52,4 @@ Upgrade the current fourth-down tool from lightweight expected-points guidance t
 ## Status Log
 - 2026-03-10: Roadmap initialized.
 - 2026-03-10: Phase 0 completed. Added baseline model notes (`docs/simulator-model-notes-v1.md`) and scenario baseline outputs (`data/simulator-baseline-v1.json`).
+- 2026-03-10: Strategy update — decided to adopt `cfb4th` methodology and implement a Sportsecon wrapper approach (see `docs/cfb4th-adoption-plan.md`).
