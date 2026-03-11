@@ -1,0 +1,222 @@
+{
+  "generatedAt": "2026-03-11T01:06:47.879Z",
+  "modelVersion": "current-pre-upgrade",
+  "scenarios": [
+    {
+      "name": "Midfield short, tied Q2",
+      "input": {
+        "name": "Midfield short, tied Q2",
+        "yardLine": 50,
+        "yardsToGo": 2,
+        "quarter": 2,
+        "timeRemaining": "07:30",
+        "scoreDifferential": 0
+      },
+      "result": {
+        "context": {
+          "yardLine": 50,
+          "yardsToGo": 2,
+          "quarter": 2,
+          "timeRemaining": "07:30",
+          "scoreDifferential": 0
+        },
+        "recommendation": "Go for It",
+        "explanation": "The baseline tradeoff is driven mostly by conversion odds versus surrendering field position. A 63% conversion estimate keeps going-for-it competitive. The expected-points math still leans toward offense here.",
+        "bestExpectedValue": 0.45300000000000007,
+        "goForIt": {
+          "expectedValue": 0.45300000000000007,
+          "conversionRate": 0.63
+        },
+        "punt": {
+          "expectedValue": 0.14
+        },
+        "fieldGoal": {
+          "expectedValue": -0.6000000000000001,
+          "distance": 67,
+          "isAvailable": true,
+          "successRate": 0.2
+        }
+      }
+    },
+    {
+      "name": "Opp 42, 4th and 4, down 3 Q4",
+      "input": {
+        "name": "Opp 42, 4th and 4, down 3 Q4",
+        "yardLine": 58,
+        "yardsToGo": 4,
+        "quarter": 4,
+        "timeRemaining": "08:42",
+        "scoreDifferential": -3
+      },
+      "result": {
+        "context": {
+          "yardLine": 58,
+          "yardsToGo": 4,
+          "quarter": 4,
+          "timeRemaining": "08:42",
+          "scoreDifferential": -3
+        },
+        "recommendation": "Go for It",
+        "explanation": "The baseline tradeoff is driven mostly by conversion odds versus surrendering field position. A 51% conversion estimate keeps going-for-it competitive. The expected-points math still leans toward offense here.",
+        "bestExpectedValue": 0.5422000000000001,
+        "goForIt": {
+          "expectedValue": 0.5422000000000001,
+          "conversionRate": 0.51
+        },
+        "punt": {
+          "expectedValue": 0.5
+        },
+        "fieldGoal": {
+          "expectedValue": -0.28,
+          "distance": 59,
+          "isAvailable": true,
+          "successRate": 0.2
+        }
+      }
+    },
+    {
+      "name": "Own 28, 4th and 7, tied Q1",
+      "input": {
+        "name": "Own 28, 4th and 7, tied Q1",
+        "yardLine": 28,
+        "yardsToGo": 7,
+        "quarter": 1,
+        "timeRemaining": "12:10",
+        "scoreDifferential": 0
+      },
+      "result": {
+        "context": {
+          "yardLine": 28,
+          "yardsToGo": 7,
+          "quarter": 1,
+          "timeRemaining": "12:10",
+          "scoreDifferential": 0
+        },
+        "recommendation": "Punt",
+        "explanation": "The baseline tradeoff is driven mostly by conversion odds versus surrendering field position. The field-position swing from the punt outweighs the offensive upside.",
+        "bestExpectedValue": -0.76,
+        "goForIt": {
+          "expectedValue": -1.4528,
+          "conversionRate": 0.36
+        },
+        "punt": {
+          "expectedValue": -0.76
+        },
+        "fieldGoal": {
+          "expectedValue": -1.576,
+          "distance": 89,
+          "isAvailable": true,
+          "successRate": 0.2
+        }
+      }
+    },
+    {
+      "name": "Opp 18, 4th and 3, up 1 Q4 late",
+      "input": {
+        "name": "Opp 18, 4th and 3, up 1 Q4 late",
+        "yardLine": 82,
+        "yardsToGo": 3,
+        "quarter": 4,
+        "timeRemaining": "02:15",
+        "scoreDifferential": 1
+      },
+      "result": {
+        "context": {
+          "yardLine": 82,
+          "yardsToGo": 3,
+          "quarter": 4,
+          "timeRemaining": "02:15",
+          "scoreDifferential": 1
+        },
+        "recommendation": "Field Goal",
+        "explanation": "Field position already favors aggression because a turnover gives the opponent a short field. From roughly 35 yards, the field goal remains credible enough to beat the alternatives. The kick produces the cleanest expected-points result in this range.",
+        "bestExpectedValue": 2.8355749999999995,
+        "goForIt": {
+          "expectedValue": 2.103225,
+          "conversionRate": 0.57
+        },
+        "punt": {
+          "expectedValue": -0.07843749999999998
+        },
+        "fieldGoal": {
+          "expectedValue": 2.8355749999999995,
+          "distance": 35,
+          "isAvailable": true,
+          "successRate": 0.94
+        }
+      }
+    },
+    {
+      "name": "Own 45, 4th and 1, down 6 Q4 late",
+      "input": {
+        "name": "Own 45, 4th and 1, down 6 Q4 late",
+        "yardLine": 45,
+        "yardsToGo": 1,
+        "quarter": 4,
+        "timeRemaining": "01:40",
+        "scoreDifferential": -6
+      },
+      "result": {
+        "context": {
+          "yardLine": 45,
+          "yardsToGo": 1,
+          "quarter": 4,
+          "timeRemaining": "01:40",
+          "scoreDifferential": -6
+        },
+        "recommendation": "Go for It",
+        "explanation": "The baseline tradeoff is driven mostly by conversion odds versus surrendering field position. A 72% conversion estimate keeps going-for-it competitive. Trailing late slightly increases the value of keeping the ball.",
+        "bestExpectedValue": 0.5070714285714285,
+        "goForIt": {
+          "expectedValue": 0.5070714285714285,
+          "conversionRate": 0.72
+        },
+        "punt": {
+          "expectedValue": -0.21333333333333335
+        },
+        "fieldGoal": {
+          "expectedValue": -0.8101785714285715,
+          "distance": 72,
+          "isAvailable": true,
+          "successRate": 0.2
+        }
+      }
+    },
+    {
+      "name": "Opp 35, 4th and 9, down 10 Q3",
+      "input": {
+        "name": "Opp 35, 4th and 9, down 10 Q3",
+        "yardLine": 65,
+        "yardsToGo": 9,
+        "quarter": 3,
+        "timeRemaining": "04:30",
+        "scoreDifferential": -10
+      },
+      "result": {
+        "context": {
+          "yardLine": 65,
+          "yardsToGo": 9,
+          "quarter": 3,
+          "timeRemaining": "04:30",
+          "scoreDifferential": -10
+        },
+        "recommendation": "Field Goal",
+        "explanation": "Field position already favors aggression because a turnover gives the opponent a short field. From roughly 52 yards, the field goal remains credible enough to beat the alternatives. The kick produces the cleanest expected-points result in this range.",
+        "bestExpectedValue": 1.708,
+        "goForIt": {
+          "expectedValue": 0.25560000000000005,
+          "conversionRate": 0.29
+        },
+        "punt": {
+          "expectedValue": 0.5
+        },
+        "fieldGoal": {
+          "expectedValue": 1.708,
+          "distance": 52,
+          "isAvailable": true,
+          "successRate": 0.66
+        }
+      }
+    }
+  ]
+}
