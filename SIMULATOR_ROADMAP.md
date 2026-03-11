@@ -7,6 +7,7 @@ Upgrade the current fourth-down tool from lightweight expected-points guidance t
 - Keep the existing UI usable while improving internals in phases.
 - Prefer transparent assumptions first, then data-backed calibration.
 - Ship incremental improvements (small deployable steps).
+- Cross-site deployment rule: once the upgraded model reaches sufficient quality/stability, deploy the model improvements to both `sportsecon` and `signalplay/site` to keep the 4th simulator aligned.
 
 ## Phase 0 — Baseline + Instrumentation
 - [ ] Snapshot current model assumptions and formulas.
