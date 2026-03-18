@@ -107,6 +107,33 @@ function getConversionProbability(yardsToGo) {
   return clamp(0.26 - (normalizedYardsToGo - 10) * 0.015, 0.12, 0.26);
 }
 
+function getSituationAdjustedConversionProbability(input) {
+  let rate = getConversionProbability(input.yardsToGo);
+
+  if (input.yardsToGo <= 2) {
+    rate += 0.03;
+  } else if (input.yardsToGo <= 4) {
+    rate += 0.015;
+  }
+
+  if (input.scoreDifferential <= -7) {
+    rate += 0.02;
+  } else if (input.scoreDifferential <= -3) {
+    rate += 0.01;
+  }
+
+  if (input.quarter <= 2 && input.yardLine >= 40 && input.yardLine <= 65) {
+    rate += 0.015;
+  }
+
+  if (input.quarter === 4 && getGameSecondsRemaining(input) <= 10 * 60 && input.scoreDifferential < 0) {
+    rate += 0.02;
+  }
+
+  return clamp(rate, 0.08, 0.95);
+}
+
+
 function getFieldGoalSuccessRate(distance) {
   return interpolateAnchors(distance, fieldGoalSuccessAnchors, "distance", "rate");
 }
@@ -214,8 +241,8 @@ function estimateDecisionWinProbabilities(input, details) {
     input.yardLine >= 45 &&
     input.yardLine <= 60
   ) {
-    goWinProbability -= 0.02;
-    details.puntWinProbabilityAdjustment = 0.015;
+    goWinProbability += 0.015;
+    details.puntWinProbabilityAdjustment = -0.01;
   }
 
   if (
@@ -223,8 +250,17 @@ function estimateDecisionWinProbabilities(input, details) {
     totalSecondsRemaining <= 10 * 60 &&
     input.scoreDifferential < 0
   ) {
-    goWinProbability += 0.02;
-    fieldGoalWinProbability += input.scoreDifferential >= -3 ? 0.005 : -0.01;
+    goWinProbability += input.scoreDifferential <= -7 ? 0.06 : 0.035;
+    fieldGoalWinProbability += input.scoreDifferential >= -3 ? 0.005 : -0.02;
+  }
+
+  if (
+    input.quarter <= 2 &&
+    input.scoreDifferential <= -7
+  ) {
+    goWinProbability += 0.05;
+    fieldGoalWinProbability -= 0.015;
+    details.puntWinProbabilityAdjustment = (details.puntWinProbabilityAdjustment || 0) - 0.025;
   }
 
   return {
@@ -309,7 +345,7 @@ function buildExplanation(input, recommendation, conversionProbability, adjustme
 
 function evaluateFourthDownDecision(rawInput) {
   const input = normalizeInput(rawInput);
-  const conversionRate = getConversionProbability(input.yardsToGo);
+  const conversionRate = getSituationAdjustedConversionProbability(input);
   const successfulConversionYardLine = clamp(input.yardLine + input.yardsToGo, 1, 99);
   const goSuccessValue = interpolateExpectedPoints(successfulConversionYardLine);
   const goFailureValue = -interpolateExpectedPoints(100 - input.yardLine);
