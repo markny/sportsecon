@@ -154,9 +154,9 @@ function estimateStateWinProbability(state) {
     : (50 - state.yardLine) / 50;
 
   let index =
-    state.scoreDifferential * (0.1 + 0.24 * lateGameWeight) +
-    (state.offenseHasBall ? 1 : -1) * (-0.02 + 0.6 * lateGameWeight) +
-    fieldAdvantage * (0.55 - 0.18 * lateGameWeight);
+    state.scoreDifferential * (0.12 + 0.24 * lateGameWeight) +
+    (state.offenseHasBall ? 1 : -1) * (0.06 + 0.66 * lateGameWeight) +
+    fieldAdvantage * (0.68 - 0.14 * lateGameWeight);
 
   if (state.scoreDifferential > 0 && lateGameWeight > 0.85) {
     const leadWeight = Math.min(state.scoreDifferential, 8) / 8;
