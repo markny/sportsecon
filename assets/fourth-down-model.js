@@ -46,6 +46,12 @@ const fieldGoalSuccessAnchors = [
   { distance: 65, rate: 0.12 }
 ];
 
+const denseSurfaceState = {
+  ready: false,
+  dimensions: null,
+  index: new Map()
+};
+
 function parseClock(timeRemaining) {
   const match = /^(\d{1,2}):(\d{2})$/.exec(String(timeRemaining).trim());
 
@@ -56,6 +62,13 @@ function parseClock(timeRemaining) {
   const minutes = Number(match[1]);
   const seconds = Number(match[2]);
   return clamp(minutes * 60 + seconds, 0, 15 * 60);
+}
+
+function formatClockFromSeconds(seconds) {
+  const normalized = clamp(Math.round(seconds), 0, 15 * 60);
+  const minutes = Math.floor(normalized / 60);
+  const remainder = normalized % 60;
+  return `${minutes}:${String(remainder).padStart(2, "0")}`;
 }
 
 function getGameSecondsRemaining(input) {
@@ -132,7 +145,6 @@ function getSituationAdjustedConversionProbability(input) {
 
   return clamp(rate, 0.08, 0.95);
 }
-
 
 function getFieldGoalSuccessRate(distance) {
   return interpolateAnchors(distance, fieldGoalSuccessAnchors, "distance", "rate");
@@ -254,10 +266,7 @@ function estimateDecisionWinProbabilities(input, details) {
     fieldGoalWinProbability += input.scoreDifferential >= -3 ? 0.005 : -0.02;
   }
 
-  if (
-    input.quarter <= 2 &&
-    input.scoreDifferential <= -7
-  ) {
+  if (input.quarter <= 2 && input.scoreDifferential <= -7) {
     goWinProbability += 0.05;
     fieldGoalWinProbability -= 0.015;
     details.puntWinProbabilityAdjustment = (details.puntWinProbabilityAdjustment || 0) - 0.025;
@@ -308,7 +317,191 @@ function getLateGameAdjustments(input) {
   return { go: 0, fieldGoal: 0, punt: 0 };
 }
 
-function buildExplanation(input, recommendation, conversionProbability, adjustments, fieldGoalDistance, winProbabilities) {
+function findBracket(value, orderedValues) {
+  const minimum = orderedValues[0];
+  const maximum = orderedValues[orderedValues.length - 1];
+  const normalized = clamp(value, minimum, maximum);
+
+  if (normalized <= minimum) {
+    return { lower: minimum, upper: minimum, weight: 0 };
+  }
+
+  for (let index = 1; index < orderedValues.length; index += 1) {
+    const upper = orderedValues[index];
+
+    if (normalized <= upper) {
+      const lower = orderedValues[index - 1];
+      const span = upper - lower;
+      return {
+        lower: lower,
+        upper: upper,
+        weight: span === 0 ? 0 : (normalized - lower) / span
+      };
+    }
+  }
+
+  return { lower: maximum, upper: maximum, weight: 0 };
+}
+
+function scenarioKey(input) {
+  return `${input.yardLine}|${input.yardsToGo}|${input.quarter}|${input.timeRemaining}|${input.scoreDifferential}`;
+}
+
+function toFiniteNumber(value) {
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return value;
+  }
+
+  if (typeof value === "string") {
+    const normalized = value.trim().toUpperCase();
+
+    if (!normalized || normalized === "NA") {
+      return null;
+    }
+
+    const parsed = Number(normalized);
+    return Number.isFinite(parsed) ? parsed : null;
+  }
+
+  return null;
+}
+
+function loadDenseSurface(surface) {
+  denseSurfaceState.ready = false;
+  denseSurfaceState.index = new Map();
+  denseSurfaceState.dimensions = null;
+
+  if (!surface?.dimensions || !Array.isArray(surface.scenarios)) {
+    return false;
+  }
+
+  denseSurfaceState.dimensions = {
+    yardLines: surface.dimensions.yardLines.slice().sort((a, b) => a - b),
+    yardsToGo: surface.dimensions.yardsToGo.slice().sort((a, b) => a - b),
+    quarters: surface.dimensions.quarters.slice().sort((a, b) => a - b),
+    timeSeconds: surface.dimensions.timeRemaining
+      .map(function (value) {
+        return parseClock(value);
+      })
+      .sort((a, b) => a - b),
+    scoreDiffs: surface.dimensions.scoreDiffs.slice().sort((a, b) => a - b)
+  };
+
+  for (const scenario of surface.scenarios) {
+    denseSurfaceState.index.set(scenario.key, scenario.output);
+  }
+
+  denseSurfaceState.ready = true;
+  return true;
+}
+
+function getDenseSurfaceEstimate(input) {
+  if (!denseSurfaceState.ready) {
+    return null;
+  }
+
+  const dimensions = denseSurfaceState.dimensions;
+  const yardBracket = findBracket(input.yardLine, dimensions.yardLines);
+  const scoreBracket = findBracket(input.scoreDifferential, dimensions.scoreDiffs);
+  const timeBracket = findBracket(parseClock(input.timeRemaining), dimensions.timeSeconds);
+  const yardsBracket = findBracket(input.yardsToGo, dimensions.yardsToGo);
+  const quarterBracket = findBracket(input.quarter, dimensions.quarters);
+
+  const weightsByMetric = [
+    [yardBracket.lower, yardBracket.upper, yardBracket.weight],
+    [yardsBracket.lower, yardsBracket.upper, yardsBracket.weight],
+    [quarterBracket.lower, quarterBracket.upper, quarterBracket.weight],
+    [timeBracket.lower, timeBracket.upper, timeBracket.weight],
+    [scoreBracket.lower, scoreBracket.upper, scoreBracket.weight]
+  ];
+
+  const accumulators = {
+    goWinProb: { weightedSum: 0, totalWeight: 0 },
+    puntWinProb: { weightedSum: 0, totalWeight: 0 },
+    fgWinProb: { weightedSum: 0, totalWeight: 0 },
+    firstDownProb: { weightedSum: 0, totalWeight: 0 },
+    fgMakeProb: { weightedSum: 0, totalWeight: 0 }
+  };
+
+  for (let mask = 0; mask < 32; mask += 1) {
+    const yardLine = (mask & 1) ? weightsByMetric[0][1] : weightsByMetric[0][0];
+    const yardsToGo = (mask & 2) ? weightsByMetric[1][1] : weightsByMetric[1][0];
+    const quarter = (mask & 4) ? weightsByMetric[2][1] : weightsByMetric[2][0];
+    const timeRemaining = formatClockFromSeconds((mask & 8) ? weightsByMetric[3][1] : weightsByMetric[3][0]);
+    const scoreDifferential = (mask & 16) ? weightsByMetric[4][1] : weightsByMetric[4][0];
+
+    const weight =
+      ((mask & 1) ? yardBracket.weight : 1 - yardBracket.weight) *
+      ((mask & 2) ? yardsBracket.weight : 1 - yardsBracket.weight) *
+      ((mask & 4) ? quarterBracket.weight : 1 - quarterBracket.weight) *
+      ((mask & 8) ? timeBracket.weight : 1 - timeBracket.weight) *
+      ((mask & 16) ? scoreBracket.weight : 1 - scoreBracket.weight);
+
+    if (weight <= 0) {
+      continue;
+    }
+
+    const output = denseSurfaceState.index.get(
+      scenarioKey({ yardLine, yardsToGo, quarter, timeRemaining, scoreDifferential })
+    );
+
+    if (!output) {
+      continue;
+    }
+
+    Object.keys(accumulators).forEach(function (metric) {
+      const numericValue = toFiniteNumber(output[metric]);
+
+      if (numericValue == null) {
+        return;
+      }
+
+      accumulators[metric].weightedSum += numericValue * weight;
+      accumulators[metric].totalWeight += weight;
+    });
+  }
+
+  const result = {};
+
+  Object.keys(accumulators).forEach(function (metric) {
+    const accumulator = accumulators[metric];
+    result[metric] = accumulator.totalWeight > 0
+      ? accumulator.weightedSum / accumulator.totalWeight
+      : null;
+  });
+
+  if (result.goWinProb == null || result.fgWinProb == null) {
+    return null;
+  }
+
+  if (result.puntWinProb == null) {
+    result.puntWinProb = estimatePuntFallbackFromSurface(input, result);
+  }
+
+  const options = [
+    { label: "Go for It", winProbability: result.goWinProb },
+    { label: "Punt", winProbability: result.puntWinProb },
+    { label: "Field Goal", winProbability: result.fgWinProb }
+  ];
+
+  result.recommendation = options.reduce(function (best, option) {
+    return option.winProbability > best.winProbability ? option : best;
+  }).label;
+
+  return result;
+}
+
+function estimatePuntFallbackFromSurface(input, result) {
+  const lateGameAdjustments = getLateGameAdjustments(input);
+  const penalty = input.yardLine >= 70 ? 0.01 + (input.yardLine - 70) * 0.0015 : 0;
+  return clamp(
+    Math.max(result.goWinProb, result.fgWinProb) - 0.012 + lateGameAdjustments.punt - penalty,
+    0.01,
+    0.99
+  );
+}
+
+function buildExplanation(input, recommendation, conversionProbability, adjustments, fieldGoalDistance, winProbabilities, provenanceLabel) {
   const fieldPositionNote = input.yardLine >= 60
     ? "Field position already favors aggression because a turnover gives the opponent a short field."
     : "The baseline tradeoff is driven mostly by conversion odds versus surrendering field position.";
@@ -316,7 +509,11 @@ function buildExplanation(input, recommendation, conversionProbability, adjustme
   const wpLens = " Estimated win probability: go " +
     Math.round(winProbabilities.goWinProbability * 100) +
     "%, punt " + Math.round(winProbabilities.puntWinProbability * 100) +
-    "%, field goal " + Math.round(winProbabilities.fieldGoalWinProbability * 100) + "% .";
+    "%, field goal " + Math.round(winProbabilities.fieldGoalWinProbability * 100) + "%.";
+
+  const provenanceNote = provenanceLabel === "dense-cfb4th-surface"
+    ? " This state is anchored to the dense cfb4th lookup surface with interpolation between nearby scenarios."
+    : " This state falls back to the local approximation layer.";
 
   if (recommendation === "Go for It") {
     const urgencyNote = adjustments.go > 0.02
@@ -324,7 +521,7 @@ function buildExplanation(input, recommendation, conversionProbability, adjustme
       : "The updated model still leans toward offense here once possession value is included.";
 
     return fieldPositionNote + " A " + Math.round(conversionProbability * 100) +
-      "% conversion estimate keeps going-for-it competitive. " + urgencyNote + wpLens;
+      "% conversion estimate keeps going-for-it competitive. " + urgencyNote + wpLens + provenanceNote;
   }
 
   if (recommendation === "Field Goal") {
@@ -333,14 +530,14 @@ function buildExplanation(input, recommendation, conversionProbability, adjustme
       : "The kick produces the cleanest blend of points and win probability in this range.";
 
     return fieldPositionNote + " From roughly " + fieldGoalDistance +
-      " yards, the field goal remains credible enough to beat the alternatives. " + leverageNote + wpLens;
+      " yards, the field goal remains credible enough to beat the alternatives. " + leverageNote + wpLens + provenanceNote;
   }
 
   const puntNote = adjustments.punt > 0.02
     ? "Protecting field position matters a bit more when leading late."
     : "The field-position swing from the punt slightly outweighs the offensive upside in this game state.";
 
-  return fieldPositionNote + " " + puntNote + wpLens;
+  return fieldPositionNote + " " + puntNote + wpLens + provenanceNote;
 }
 
 function evaluateFourthDownDecision(rawInput) {
@@ -370,13 +567,29 @@ function evaluateFourthDownDecision(rawInput) {
   const puntExpectedValue = basePuntExpectedValue + adjustments.punt;
   const fieldGoalExpectedValue = baseFieldGoalExpectedValue + adjustments.fieldGoal;
 
-  const winProbabilities = estimateDecisionWinProbabilities(input, {
+  const approximatedWinProbabilities = estimateDecisionWinProbabilities(input, {
     conversionRate: conversionRate,
     successfulConversionYardLine: successfulConversionYardLine,
     opponentStartAfterPunt: opponentStartAfterPunt,
     fieldGoalSuccessRate: fieldGoalSuccessRate,
     puntWinProbabilityAdjustment: 0
   });
+
+  const surfaceEstimate = getDenseSurfaceEstimate(input);
+  const winProbabilities = surfaceEstimate
+    ? {
+        goWinProbability: surfaceEstimate.goWinProb,
+        puntWinProbability: surfaceEstimate.puntWinProb,
+        fieldGoalWinProbability: surfaceEstimate.fgWinProb,
+        goSuccessWinProbability: approximatedWinProbabilities.goSuccessWinProbability,
+        goFailureWinProbability: approximatedWinProbabilities.goFailureWinProbability,
+        fieldGoalMakeWinProbability: approximatedWinProbabilities.fieldGoalMakeWinProbability,
+        fieldGoalMissWinProbability: approximatedWinProbabilities.fieldGoalMissWinProbability
+      }
+    : approximatedWinProbabilities;
+
+  const effectiveConversionRate = surfaceEstimate?.firstDownProb ?? conversionRate;
+  const effectiveFieldGoalSuccessRate = surfaceEstimate?.fgMakeProb ?? fieldGoalSuccessRate;
 
   const options = [
     {
@@ -396,13 +609,17 @@ function evaluateFourthDownDecision(rawInput) {
     }
   ];
 
-  const bestOption = options.reduce(function (best, option) {
-    if (option.winProbability !== best.winProbability) {
-      return option.winProbability > best.winProbability ? option : best;
-    }
+  const bestOption = surfaceEstimate?.recommendation
+    ? options.find(function (option) { return option.label === surfaceEstimate.recommendation; })
+    : options.reduce(function (best, option) {
+        if (option.winProbability !== best.winProbability) {
+          return option.winProbability > best.winProbability ? option : best;
+        }
 
-    return option.expectedValue > best.expectedValue ? option : best;
-  });
+        return option.expectedValue > best.expectedValue ? option : best;
+      });
+
+  const provenance = surfaceEstimate ? "dense-cfb4th-surface" : "local-approximation";
 
   return {
     context: input,
@@ -410,16 +627,18 @@ function evaluateFourthDownDecision(rawInput) {
     explanation: buildExplanation(
       input,
       bestOption.label,
-      conversionRate,
+      effectiveConversionRate,
       adjustments,
       fieldGoalDistance,
-      winProbabilities
+      winProbabilities,
+      provenance
     ),
     bestExpectedValue: bestOption.expectedValue,
     bestWinProbability: bestOption.winProbability,
+    modelProvenance: provenance,
     goForIt: {
       expectedValue: goExpectedValue,
-      conversionRate: conversionRate,
+      conversionRate: effectiveConversionRate,
       winProbability: winProbabilities.goWinProbability,
       successWinProbability: winProbabilities.goSuccessWinProbability,
       failureWinProbability: winProbabilities.goFailureWinProbability
@@ -433,7 +652,7 @@ function evaluateFourthDownDecision(rawInput) {
       expectedValue: fieldGoalExpectedValue,
       distance: fieldGoalDistance,
       isAvailable: true,
-      successRate: fieldGoalSuccessRate,
+      successRate: effectiveFieldGoalSuccessRate,
       winProbability: winProbabilities.fieldGoalWinProbability,
       makeWinProbability: winProbabilities.fieldGoalMakeWinProbability,
       missWinProbability: winProbabilities.fieldGoalMissWinProbability
@@ -456,5 +675,9 @@ function formatScoreDifferential(scoreDifferential) {
 window.FourthDownModel = {
   evaluateFourthDownDecision: evaluateFourthDownDecision,
   formatFieldPosition: formatFieldPosition,
-  formatScoreDifferential: formatScoreDifferential
+  formatScoreDifferential: formatScoreDifferential,
+  loadDenseSurface: loadDenseSurface,
+  isDenseSurfaceReady: function () {
+    return denseSurfaceState.ready;
+  }
 };

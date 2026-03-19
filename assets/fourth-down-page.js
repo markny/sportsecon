@@ -16,7 +16,15 @@
     return (Math.round(value * 1000) / 10).toFixed(1) + "%";
   }
 
+  function renderStatus(message) {
+    output.innerHTML = `<p class="meta">${message}</p>`;
+  }
+
   function render(result) {
+    const provenanceLabel = result.modelProvenance === "dense-cfb4th-surface"
+      ? "Dense cfb4th surface + interpolation"
+      : "Local approximation fallback";
+
     output.innerHTML = `
       <div class="result-highlight">
         <div>
@@ -77,12 +85,15 @@
           </tr>
         </tbody>
       </table>
-      <p class="meta">Model basis: Sportsecon wrapper using cfb4th-inspired fourth-down and win-probability heuristics. Treat outputs as directional rather than exact team-specific odds.</p>
+      <p class="meta">Model basis: ${provenanceLabel}. Source methodology adapted from SportsDataverse cfb4th for Sportsecon.com presentation; treat outputs as directional rather than exact team-specific odds.</p>
     `;
   }
 
   function handleSubmit(event) {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
+
     const formData = new FormData(form);
     const result = model.evaluateFourthDownDecision({
       yardLine: formData.get("yardLine"),
@@ -94,6 +105,25 @@
     render(result);
   }
 
-  form.addEventListener("submit", handleSubmit);
-  handleSubmit(new Event("submit"));
+  async function initialize() {
+    renderStatus("Loading dense cfb4th surface…");
+
+    try {
+      const response = await fetch("/data/cfb4th-dense-surface.json", { cache: "force-cache" });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      const surface = await response.json();
+      model.loadDenseSurface(surface);
+    } catch (error) {
+      console.warn("Dense fourth-down surface unavailable, falling back to approximation layer.", error);
+    }
+
+    form.addEventListener("submit", handleSubmit);
+    handleSubmit();
+  }
+
+  initialize();
 })();
