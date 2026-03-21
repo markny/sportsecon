@@ -185,7 +185,7 @@
           result.punt.winProbability,
           result.bestWinProbability,
           `
-            <div class="implication-stat implication-stat--neutral"><span>Opponent start</span><strong>Own ${result.punt.opponentStartYardLine}</strong></div>
+            <div class="implication-stat implication-stat--neutral"><span>Opponent start</span><strong>${model.formatFieldPosition(result.punt.opponentStartYardLine)}</strong></div>
             <div class="implication-stat implication-stat--neutral"><span>Punt win probability</span><strong>${toPercent(result.punt.winProbability)}</strong></div>
             <div class="implication-stat implication-stat--neutral"><span>Decision type</span><strong>Field-position play</strong></div>
           `,
