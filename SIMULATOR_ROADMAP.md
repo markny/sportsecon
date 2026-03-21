@@ -37,6 +37,7 @@ Upgrade the current fourth-down tool from lightweight expected-points guidance t
 - [ ] Add scenario compare mode (A/B situations).
 - [ ] Add sensitivity view (how recommendation changes with assumptions).
 - [ ] Improve mobile output readability and interpretation text.
+- [x] Draft comprehensive simulator UI/input-output spec for v2 (`docs/simulator-ui-spec-v2.md`).
 
 ## Deliverables
 - Model notes document (assumptions + formulas)
@@ -61,3 +62,4 @@ Upgrade the current fourth-down tool from lightweight expected-points guidance t
 - 2026-03-18: Continued calibration after timeout recovery; second pass improved recommendation agreement to 83.3% (533/640). Remaining disagreements are concentrated in plus-territory go-vs-field-goal edge cases and some absolute WP level errors.
 - 2026-03-19: Integrated `data/cfb4th-dense-surface.json` into the live browser model via in-memory lookup + multilinear interpolation, with the UI fetching the dense surface on load and falling back to the local approximation layer if unavailable. Re-ran parity/agreement testing: seeded benchmark agreement is 3/4, while the broader 640-scenario grid improved to 89.8% (575/640). Remaining misses are mostly second-quarter/plus-territory edge cases and a few punt-vs-go boundary states outside the dense surface's exact support.
 - 2026-03-20: Validated dense-surface recommendation logic under a stricter test where punt remains eligible in the recommendation set. Agreement rose to 99.4% (636/640) on the 640-scenario benchmark grid, indicating near-source convergence rather than an artifact of recommendation filtering.
+- 2026-03-21: Began the UI/input-output upgrade phase by drafting a comprehensive v2 spec covering default controls, advanced inputs, richer outputs, and implementation phases (`docs/simulator-ui-spec-v2.md`).
