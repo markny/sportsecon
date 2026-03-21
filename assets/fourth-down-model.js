@@ -476,22 +476,15 @@ function getDenseSurfaceEstimate(input) {
 
   if (result.puntWinProb == null) {
     result.puntWinProb = estimatePuntFallbackFromSurface(input, result);
-    result.puntWasEstimated = true;
-  } else {
-    result.puntWasEstimated = false;
   }
 
   const options = [
     { label: "Go for It", winProbability: result.goWinProb },
-    { label: "Punt", winProbability: result.puntWinProb, excludeFromRecommendation: result.puntWasEstimated },
+    { label: "Punt", winProbability: result.puntWinProb },
     { label: "Field Goal", winProbability: result.fgWinProb }
   ];
 
-  const recommendationOptions = options.filter(function (option) {
-    return !option.excludeFromRecommendation;
-  });
-
-  result.recommendation = recommendationOptions.reduce(function (best, option) {
+  result.recommendation = options.reduce(function (best, option) {
     return option.winProbability > best.winProbability ? option : best;
   }).label;
 

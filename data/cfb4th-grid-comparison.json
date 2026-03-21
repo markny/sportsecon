@@ -1,8 +1,8 @@
 {
   "summary": {
     "scenarioCount": 640,
-    "recommendationAgreement": 640,
-    "recommendationAgreementRate": 1,
+    "recommendationAgreement": 636,
+    "recommendationAgreementRate": 0.99375,
     "meanScenarioAbsError": null,
     "worstScenarios": [
       {
@@ -484,26 +484,26 @@
     },
     "Q4-YTG1": {
       "count": 80,
-      "recMatch": 80,
-      "recommendationAgreementRate": 1,
+      "recMatch": 79,
+      "recommendationAgreementRate": 0.9875,
       "meanScenarioAbsError": null
     },
     "Q4-YTG2": {
       "count": 80,
-      "recMatch": 80,
-      "recommendationAgreementRate": 1,
+      "recMatch": 79,
+      "recommendationAgreementRate": 0.9875,
       "meanScenarioAbsError": null
     },
     "Q4-YTG4": {
       "count": 80,
-      "recMatch": 80,
-      "recommendationAgreementRate": 1,
+      "recMatch": 79,
+      "recommendationAgreementRate": 0.9875,
       "meanScenarioAbsError": null
     },
     "Q4-YTG7": {
       "count": 80,
-      "recMatch": 80,
-      "recommendationAgreementRate": 1,
+      "recMatch": 79,
+      "recommendationAgreementRate": 0.9875,
       "meanScenarioAbsError": null
     }
   },
@@ -19831,7 +19831,7 @@
         "scoreDifferential": 3
       },
       "model": {
-        "recommendation": "Go for It",
+        "recommendation": "Punt",
         "goWinProb": 0.899,
         "puntWinProb": 0.901375,
         "fgWinProb": 0.8079
@@ -19849,7 +19849,7 @@
         "punt": null,
         "fg": 0
       },
-      "recommendationMatch": true,
+      "recommendationMatch": false,
       "meanAbsError": null
     },
     {
@@ -19986,7 +19986,7 @@
         "scoreDifferential": 3
       },
       "model": {
-        "recommendation": "Go for It",
+        "recommendation": "Punt",
         "goWinProb": 0.8711,
         "puntWinProb": 0.873475,
         "fgWinProb": 0.8079
@@ -20004,7 +20004,7 @@
         "punt": null,
         "fg": 0
       },
-      "recommendationMatch": true,
+      "recommendationMatch": false,
       "meanAbsError": null
     },
     {
@@ -20141,7 +20141,7 @@
         "scoreDifferential": 3
       },
       "model": {
-        "recommendation": "Go for It",
+        "recommendation": "Punt",
         "goWinProb": 0.851,
         "puntWinProb": 0.853375,
         "fgWinProb": 0.8079
@@ -20159,7 +20159,7 @@
         "punt": null,
         "fg": 0
       },
-      "recommendationMatch": true,
+      "recommendationMatch": false,
       "meanAbsError": null
     },
     {
@@ -20296,7 +20296,7 @@
         "scoreDifferential": 3
       },
       "model": {
-        "recommendation": "Go for It",
+        "recommendation": "Punt",
         "goWinProb": 0.8294,
         "puntWinProb": 0.831775,
         "fgWinProb": 0.8079
@@ -20314,7 +20314,7 @@
         "punt": null,
         "fg": 0
       },
-      "recommendationMatch": true,
+      "recommendationMatch": false,
       "meanAbsError": null
     },
     {
