@@ -8,11 +8,19 @@ const outPath = `${base}/data/cfb4th-grid-comparison.json`
 
 const modelCode = fs.readFileSync(modelPath, 'utf8')
 const benchmark = JSON.parse(fs.readFileSync(benchmarkPath, 'utf8'))
+const denseSurfacePath = `${base}/data/cfb4th-dense-surface.json`
+const denseSurface = fs.existsSync(denseSurfacePath)
+  ? JSON.parse(fs.readFileSync(denseSurfacePath, 'utf8'))
+  : null
 
 const sandbox = { window: {} }
 vm.createContext(sandbox)
 vm.runInContext(modelCode, sandbox)
 const model = sandbox.window.FourthDownModel
+
+if (denseSurface && model?.loadDenseSurface) {
+  model.loadDenseSurface(denseSurface)
+}
 
 function num(x) {
   return typeof x === 'number' && Number.isFinite(x) ? x : null

@@ -68,7 +68,7 @@ function formatClockFromSeconds(seconds) {
   const normalized = clamp(Math.round(seconds), 0, 15 * 60);
   const minutes = Math.floor(normalized / 60);
   const remainder = normalized % 60;
-  return `${minutes}:${String(remainder).padStart(2, "0")}`;
+  return `${String(minutes).padStart(2, "0")}:${String(remainder).padStart(2, "0")}`;
 }
 
 function getGameSecondsRemaining(input) {
@@ -476,15 +476,22 @@ function getDenseSurfaceEstimate(input) {
 
   if (result.puntWinProb == null) {
     result.puntWinProb = estimatePuntFallbackFromSurface(input, result);
+    result.puntWasEstimated = true;
+  } else {
+    result.puntWasEstimated = false;
   }
 
   const options = [
     { label: "Go for It", winProbability: result.goWinProb },
-    { label: "Punt", winProbability: result.puntWinProb },
+    { label: "Punt", winProbability: result.puntWinProb, excludeFromRecommendation: result.puntWasEstimated },
     { label: "Field Goal", winProbability: result.fgWinProb }
   ];
 
-  result.recommendation = options.reduce(function (best, option) {
+  const recommendationOptions = options.filter(function (option) {
+    return !option.excludeFromRecommendation;
+  });
+
+  result.recommendation = recommendationOptions.reduce(function (best, option) {
     return option.winProbability > best.winProbability ? option : best;
   }).label;
 
