@@ -158,6 +158,12 @@ function getNetPuntDistance(yardLine) {
   return 12;
 }
 
+function getOpponentStartAfterMissedFieldGoal(yardLine) {
+  const kickSpotYardLine = clamp(yardLine - 7, 1, 99);
+  const opponentStart = 100 - kickSpotYardLine;
+  return clamp(Math.max(20, opponentStart), 1, 99);
+}
+
 function estimateStateWinProbability(state) {
   const totalSecondsRemaining = clamp(state.totalSecondsRemaining, 1, 4 * 15 * 60);
   const lateGameWeight = 1 - totalSecondsRemaining / (4 * 15 * 60);
@@ -223,7 +229,7 @@ function estimateDecisionWinProbabilities(input, details) {
   });
   const fieldGoalMissWinProbability = estimateStateWinProbability({
     offenseHasBall: false,
-    yardLine: 100 - input.yardLine,
+    yardLine: details.opponentStartAfterMissedFieldGoal,
     scoreDifferential: input.scoreDifferential,
     totalSecondsRemaining: totalSecondsRemaining
   });
@@ -551,7 +557,8 @@ function evaluateFourthDownDecision(rawInput) {
 
   const fieldGoalDistance = 117 - input.yardLine;
   const fieldGoalSuccessRate = getFieldGoalSuccessRate(fieldGoalDistance);
-  const fieldGoalMissValue = -interpolateExpectedPoints(100 - input.yardLine);
+  const opponentStartAfterMissedFieldGoal = getOpponentStartAfterMissedFieldGoal(input.yardLine);
+  const fieldGoalMissValue = -interpolateExpectedPoints(opponentStartAfterMissedFieldGoal);
   const baseFieldGoalExpectedValue =
     fieldGoalSuccessRate * 3 + (1 - fieldGoalSuccessRate) * fieldGoalMissValue;
 
@@ -571,6 +578,7 @@ function evaluateFourthDownDecision(rawInput) {
     conversionRate: conversionRate,
     successfulConversionYardLine: successfulConversionYardLine,
     opponentStartAfterPunt: opponentStartAfterPunt,
+    opponentStartAfterMissedFieldGoal: opponentStartAfterMissedFieldGoal,
     fieldGoalSuccessRate: fieldGoalSuccessRate,
     puntWinProbabilityAdjustment: 0
   });
@@ -655,7 +663,8 @@ function evaluateFourthDownDecision(rawInput) {
       successRate: effectiveFieldGoalSuccessRate,
       winProbability: winProbabilities.fieldGoalWinProbability,
       makeWinProbability: winProbabilities.fieldGoalMakeWinProbability,
-      missWinProbability: winProbabilities.fieldGoalMissWinProbability
+      missWinProbability: winProbabilities.fieldGoalMissWinProbability,
+      opponentStartAfterMiss: opponentStartAfterMissedFieldGoal
     }
   };
 }

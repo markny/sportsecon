@@ -72,9 +72,8 @@
             <div class="field field--full field--slider">
               <div class="field__topline">
                 <label for="yardLine">Yard line</label>
-                <div class="yardline-display">
+                <div class="yardline-display yardline-display--single">
                   <span id="yardLineDisplay">Opponent 42</span>
-                  <strong id="yardLineValue">58</strong>
                 </div>
               </div>
               <input id="yardLine" name="yardLine" type="range" min="1" max="99" value="58" step="1">
@@ -83,30 +82,52 @@
                 <span>Midfield</span>
                 <span>Opp 1</span>
               </div>
-              <p class="muted">Use the slider for feel, or nudge other inputs below to test exact game states.</p>
             </div>
 
             <div class="form-grid form-grid--simulator">
-              <div class="field">
-                <label for="yardsToGo">Yards to go</label>
-                <input id="yardsToGo" name="yardsToGo" type="number" min="1" max="25" value="4">
+              <div class="field field--slider compact-slider-field">
+                <div class="field__topline">
+                  <label for="yardsToGo">Yards to go</label>
+                  <strong class="slider-value" id="yardsToGoValue">4</strong>
+                </div>
+                <input id="yardsToGo" name="yardsToGo" type="range" min="1" max="15" value="4" step="1">
+                <div class="slider-scale slider-scale--compact" aria-hidden="true">
+                  <span>1</span>
+                  <span>8</span>
+                  <span>15</span>
+                </div>
               </div>
-              <div class="field">
-                <label for="quarter">Quarter</label>
-                <select id="quarter" name="quarter">
-                  <option value="1">1st</option>
-                  <option value="2">2nd</option>
-                  <option value="3">3rd</option>
-                  <option value="4" selected>4th</option>
-                </select>
+
+              <div class="field field--segmented">
+                <label>Quarter</label>
+                <div class="segmented-control" role="radiogroup" aria-label="Quarter">
+                  <input type="radio" name="quarter" id="quarter1" value="1">
+                  <label for="quarter1">1st</label>
+                  <input type="radio" name="quarter" id="quarter2" value="2">
+                  <label for="quarter2">2nd</label>
+                  <input type="radio" name="quarter" id="quarter3" value="3">
+                  <label for="quarter3">3rd</label>
+                  <input type="radio" name="quarter" id="quarter4" value="4" checked>
+                  <label for="quarter4">4th</label>
+                </div>
               </div>
+
               <div class="field">
                 <label for="timeRemaining">Time remaining</label>
                 <input id="timeRemaining" name="timeRemaining" type="text" value="08:42" pattern="[0-9]{1,2}:[0-9]{2}">
               </div>
-              <div class="field">
-                <label for="scoreDifferential">Score differential</label>
-                <input id="scoreDifferential" name="scoreDifferential" type="number" min="-30" max="30" value="-3">
+
+              <div class="field field--slider compact-slider-field">
+                <div class="field__topline">
+                  <label for="scoreDifferential">Score differential</label>
+                  <strong class="slider-value" id="scoreDifferentialValue">Down 3</strong>
+                </div>
+                <input id="scoreDifferential" name="scoreDifferential" type="range" min="-21" max="21" value="-3" step="1">
+                <div class="slider-scale slider-scale--compact" aria-hidden="true">
+                  <span>-21</span>
+                  <span>0</span>
+                  <span>+21</span>
+                </div>
               </div>
             </div>
 

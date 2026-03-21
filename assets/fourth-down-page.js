@@ -3,7 +3,10 @@
   const output = document.getElementById("fourth-down-output");
   const yardLineInput = document.getElementById("yardLine");
   const yardLineDisplay = document.getElementById("yardLineDisplay");
-  const yardLineValue = document.getElementById("yardLineValue");
+  const yardsToGoInput = document.getElementById("yardsToGo");
+  const yardsToGoValue = document.getElementById("yardsToGoValue");
+  const scoreDifferentialInput = document.getElementById("scoreDifferential");
+  const scoreDifferentialValue = document.getElementById("scoreDifferentialValue");
   const advancedInputs = document.getElementById("advancedInputs");
   const modeButtons = Array.from(document.querySelectorAll("[data-mode-button]"));
   const resetButton = document.getElementById("resetScenario");
@@ -37,26 +40,38 @@
   }
 
   function toSignedPercent(value) {
-    if (Math.abs(value) < 0.0005) {
-      return "Best option";
-    }
-
-    const rounded = (Math.round(Math.abs(value) * 1000) / 10).toFixed(1) + "%";
-    return "-" + rounded + " vs best";
+    const sign = value > 0 ? "+" : "-";
+    return sign + (Math.round(Math.abs(value) * 1000) / 10).toFixed(1) + "%";
   }
 
   function getFieldPositionLabel(yardLine) {
     return model.formatFieldPosition(Number(yardLine)).replace(/^Opp\s/, "Opponent ");
   }
 
+  function getScoreDifferentialLabel(scoreDifferential) {
+    const value = Number(scoreDifferential);
+    if (value > 0) return "Up " + value;
+    if (value < 0) return "Down " + Math.abs(value);
+    return "Tied";
+  }
+
   function updateYardLineDisplay() {
-    if (!yardLineInput || !yardLineDisplay || !yardLineValue) {
+    if (!yardLineInput || !yardLineDisplay) {
       return;
     }
 
     const yardLine = Number(yardLineInput.value || defaults.yardLine);
     yardLineDisplay.textContent = getFieldPositionLabel(yardLine);
-    yardLineValue.textContent = String(yardLine);
+  }
+
+  function updateSliderDisplays() {
+    if (yardsToGoInput && yardsToGoValue) {
+      yardsToGoValue.textContent = String(yardsToGoInput.value);
+    }
+
+    if (scoreDifferentialInput && scoreDifferentialValue) {
+      scoreDifferentialValue.textContent = getScoreDifferentialLabel(scoreDifferentialInput.value);
+    }
   }
 
   function renderStatus(message) {
@@ -77,34 +92,40 @@
     }
   }
 
-  function getMetricCards(result) {
-    return `
-      <div class="tool-summary tool-summary--simulator">
-        <div class="metric">
-          <span class="meta">Field position</span>
-          <strong>${model.formatFieldPosition(result.context.yardLine)}</strong>
-        </div>
-        <div class="metric">
-          <span class="meta">Game state</span>
-          <strong>Q${result.context.quarter}, ${result.context.timeRemaining}</strong>
-        </div>
-        <div class="metric">
-          <span class="meta">Score state</span>
-          <strong>${model.formatScoreDifferential(result.context.scoreDifferential)}</strong>
-        </div>
-      </div>
-    `;
+  function getScenarioLabel(result) {
+    return `4th & ${result.context.yardsToGo} · ${model.formatFieldPosition(result.context.yardLine)} · Q${result.context.quarter} · ${result.context.timeRemaining} · ${model.formatScoreDifferential(result.context.scoreDifferential)}`;
   }
 
-  function getComparisonCard(title, supportingLabel, supportingValue, winProbability, bestWinProbability, toneClass) {
+  function getRecommendationEdge(result) {
+    const values = [
+      result.goForIt.winProbability,
+      result.punt.winProbability,
+      result.fieldGoal.winProbability
+    ].sort(function (a, b) { return b - a; });
+
+    return values[0] - values[1];
+  }
+
+  function getDecisionRow(label, overallWp, bestWp, detailHtml, isBest) {
+    const edge = bestWp - overallWp;
+
     return `
-      <article class="decision-card ${toneClass}">
-        <div class="decision-card__topline">
-          <span class="meta">${title}</span>
-          <span class="decision-card__delta">${toSignedPercent(bestWinProbability - winProbability)}</span>
+      <article class="implication-row ${isBest ? "implication-row--best" : ""}">
+        <div class="implication-row__main">
+          <div class="implication-row__titleline">
+            <div>
+              <p class="meta">${label}</p>
+              <strong class="implication-row__wp">${toPercent(overallWp)}</strong>
+              <span class="implication-row__wp-label">Overall win probability</span>
+            </div>
+            <div class="implication-row__delta">
+              ${isBest ? "Best option" : toSignedPercent(-edge) + " vs best"}
+            </div>
+          </div>
+          <div class="implication-row__details">
+            ${detailHtml}
+          </div>
         </div>
-        <strong class="decision-card__value">${toPercent(winProbability)}</strong>
-        <p class="decision-card__support"><span>${supportingLabel}</span><strong>${supportingValue}</strong></p>
       </article>
     `;
   }
@@ -113,47 +134,61 @@
     const provenanceLabel = result.modelProvenance === "dense-cfb4th-surface"
       ? "Dense cfb4th-aligned surface"
       : "Local approximation fallback";
+    const edge = getRecommendationEdge(result);
 
     output.innerHTML = `
-      <section class="result-hero">
-        <div>
-          <p class="meta">Best decision</p>
-          <h3>${result.recommendation}</h3>
-          <p class="result-hero__summary">${result.explanation}</p>
-        </div>
-        <div class="result-hero__score">
-          <span class="meta">Best win probability</span>
-          <strong>${toPercent(result.bestWinProbability)}</strong>
-          <span class="muted">${provenanceLabel}</span>
-        </div>
+      <section class="scenario-strip">
+        <p class="meta">Decision snapshot</p>
+        <h3>${result.recommendation}</h3>
+        <p class="scenario-strip__summary">${getScenarioLabel(result)}</p>
       </section>
 
-      ${getMetricCards(result)}
+      <section class="implication-panel">
+        <div class="implication-panel__header">
+          <div>
+            <p class="meta">Recommendation</p>
+            <strong class="implication-panel__headline">${result.recommendation} at ${toPercent(result.bestWinProbability)} win probability</strong>
+          </div>
+          <div class="implication-panel__edge">
+            <span class="meta">Edge over next best</span>
+            <strong>${toPercent(edge)}</strong>
+          </div>
+        </div>
 
-      <section class="decision-grid">
-        ${getComparisonCard(
+        ${getDecisionRow(
           "Go for it",
-          "Conversion probability",
-          toPercent(result.goForIt.conversionRate),
           result.goForIt.winProbability,
           result.bestWinProbability,
-          result.recommendation === "Go for It" ? "decision-card--best" : ""
+          `
+            <div class="implication-stat"><span>Conversion probability</span><strong>${toPercent(result.goForIt.conversionRate)}</strong></div>
+            <div class="implication-stat"><span>Win probability if converted</span><strong>${toPercent(result.goForIt.successWinProbability)}</strong></div>
+            <div class="implication-stat"><span>Win probability if stopped</span><strong>${toPercent(result.goForIt.failureWinProbability)}</strong></div>
+          `,
+          result.recommendation === "Go for It"
         )}
-        ${getComparisonCard(
-          "Punt",
-          "Opponent start",
-          "Own " + result.punt.opponentStartYardLine,
-          result.punt.winProbability,
-          result.bestWinProbability,
-          result.recommendation === "Punt" ? "decision-card--best" : ""
-        )}
-        ${getComparisonCard(
+
+        ${getDecisionRow(
           "Field goal",
-          "Attempt profile",
-          result.fieldGoal.distance + " yd · " + toPercent(result.fieldGoal.successRate),
           result.fieldGoal.winProbability,
           result.bestWinProbability,
-          result.recommendation === "Field Goal" ? "decision-card--best" : ""
+          `
+            <div class="implication-stat"><span>Kick profile</span><strong>${result.fieldGoal.distance} yd</strong></div>
+            <div class="implication-stat"><span>Win probability if made</span><strong>${toPercent(result.fieldGoal.makeWinProbability)}</strong></div>
+            <div class="implication-stat"><span>Win probability if missed</span><strong>${toPercent(result.fieldGoal.missWinProbability)}</strong></div>
+          `,
+          result.recommendation === "Field Goal"
+        )}
+
+        ${getDecisionRow(
+          "Punt",
+          result.punt.winProbability,
+          result.bestWinProbability,
+          `
+            <div class="implication-stat"><span>Opponent start</span><strong>Own ${result.punt.opponentStartYardLine}</strong></div>
+            <div class="implication-stat"><span>Punt win probability</span><strong>${toPercent(result.punt.winProbability)}</strong></div>
+            <div class="implication-stat"><span>Decision type</span><strong>Field-position play</strong></div>
+          `,
+          result.recommendation === "Punt"
         )}
       </section>
 
@@ -161,20 +196,6 @@
         <div class="explanation-panel__section">
           <p class="meta">Why this recommendation</p>
           <p>${result.explanation}</p>
-        </div>
-        <div class="mini-grid decision-facts">
-          <div class="card decision-fact">
-            <p class="meta">Go expected value</p>
-            <strong>${toFixed(result.goForIt.expectedValue)} EP</strong>
-          </div>
-          <div class="card decision-fact">
-            <p class="meta">Punt expected value</p>
-            <strong>${toFixed(result.punt.expectedValue)} EP</strong>
-          </div>
-          <div class="card decision-fact">
-            <p class="meta">FG expected value</p>
-            <strong>${toFixed(result.fieldGoal.expectedValue)} EP</strong>
-          </div>
         </div>
         <p class="meta">Model basis: ${provenanceLabel}. Treat outputs as directional decision support rather than exact team-specific odds.</p>
       </section>
@@ -202,10 +223,17 @@
     Object.keys(defaults).forEach(function (key) {
       const field = form.elements.namedItem(key);
       if (!field) return;
-      field.value = defaults[key];
+
+      if (field instanceof RadioNodeList) {
+        const radio = form.querySelector(`[name="${key}"][value="${defaults[key]}"]`);
+        if (radio) radio.checked = true;
+      } else {
+        field.value = defaults[key];
+      }
     });
 
     updateYardLineDisplay();
+    updateSliderDisplays();
     setMode("simple");
     evaluateCurrentForm();
   }
@@ -235,11 +263,20 @@
       });
     }
 
-    ["yardsToGo", "quarter", "timeRemaining", "scoreDifferential", "offenseTimeouts", "defenseTimeouts", "pregameSpread", "overUnder", "receivesSecondHalfKickoff"].forEach(function (name) {
+    [yardsToGoInput, scoreDifferentialInput].forEach(function (field) {
+      if (!field) return;
+      field.addEventListener("input", function () {
+        updateSliderDisplays();
+        evaluateCurrentForm();
+      });
+      field.addEventListener("change", evaluateCurrentForm);
+    });
+
+    ["quarter", "timeRemaining", "offenseTimeouts", "defenseTimeouts", "pregameSpread", "overUnder", "receivesSecondHalfKickoff"].forEach(function (name) {
       const field = form.elements.namedItem(name);
       if (!field) return;
       field.addEventListener("change", evaluateCurrentForm);
-      if (field.tagName === "INPUT" && field.type !== "range") {
+      if (!(field instanceof RadioNodeList) && field.tagName === "INPUT" && field.type !== "range") {
         field.addEventListener("input", evaluateCurrentForm);
       }
     });
@@ -255,6 +292,7 @@
     }
 
     updateYardLineDisplay();
+    updateSliderDisplays();
     setMode("simple");
     evaluateCurrentForm();
   }
