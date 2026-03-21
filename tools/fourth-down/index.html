@@ -29,43 +29,64 @@
   <main>
     <section class="page-hero">
       <div class="shell page-grid">
-        <div>
-          <p class="eyebrow">Tool beta</p>
+        <div class="page-hero__content">
+          <p class="eyebrow">Testing interface</p>
           <h1>Fourth Down Simulator</h1>
           <p class="page-intro">
-            This beta version uses the current Sportsecon.com port of the canonical SignalPlay fourth-down model,
-            packaged as a simple browser tool for quick decision checks and scenario testing.
+            Explore go-for-it, punt, and field-goal decisions with the current Sportsecon model.
+            This version is designed to make the model easier to test, compare, and challenge.
           </p>
           <div class="subnav">
             <a href="/blog/fourth-down-beta/">Read the starter post</a>
             <a href="/tools/">Back to all tools</a>
           </div>
         </div>
-        <aside class="panel">
-          <p class="panel__label">What this beta does</p>
+        <aside class="panel panel--accent">
+          <p class="panel__label">About this version</p>
           <p>
-            It compares three choices, translates the output into readable guidance, and leaves room for
-            future model expansion, richer assumptions, and cleaner visualization.
+            The recommendation engine uses the denser cfb4th-aligned surface when available, with a local approximation fallback.
+            The goal here is simple: make the model easy to pressure-test.
           </p>
           <p class="muted">
-            The current model is intentionally lightweight. It should be treated as structured decision support, not a finished game-management engine.
+            Yard line uses a 1–99 scale from your own goal line: 1 = own 1, 50 = midfield, 58 = opponent 42, 99 = opponent 1.
           </p>
         </aside>
       </div>
     </section>
 
     <section class="section">
-      <div class="shell tool-layout">
-        <section class="form-panel">
-          <p class="eyebrow">Scenario input</p>
-          <h2>Run a fourth-down decision</h2>
+      <div class="shell tool-layout tool-layout--simulator">
+        <section class="form-panel simulator-panel">
+          <div class="simulator-panel__header">
+            <div>
+              <p class="eyebrow">Scenario input</p>
+              <h2>Set the situation</h2>
+            </div>
+            <div class="view-toggle" role="tablist" aria-label="Input detail level">
+              <button type="button" class="view-toggle__button is-active" data-mode-button="simple" aria-pressed="true">Simple</button>
+              <button type="button" class="view-toggle__button" data-mode-button="advanced" aria-pressed="false">Advanced</button>
+            </div>
+          </div>
+
           <form id="fourth-down-form">
-            <div class="form-grid">
-              <div class="field">
+            <div class="field field--full field--slider">
+              <div class="field__topline">
                 <label for="yardLine">Yard line</label>
-                <input id="yardLine" name="yardLine" type="number" min="1" max="99" value="58">
-                <p class="muted">Uses a 1–99 scale from your own goal line: 1 = own 1, 50 = midfield, 58 = opponent 42, 99 = opponent 1.</p>
+                <div class="yardline-display">
+                  <span id="yardLineDisplay">Opponent 42</span>
+                  <strong id="yardLineValue">58</strong>
+                </div>
               </div>
+              <input id="yardLine" name="yardLine" type="range" min="1" max="99" value="58" step="1">
+              <div class="slider-scale" aria-hidden="true">
+                <span>Own 1</span>
+                <span>Midfield</span>
+                <span>Opp 1</span>
+              </div>
+              <p class="muted">Use the slider for feel, or nudge other inputs below to test exact game states.</p>
+            </div>
+
+            <div class="form-grid form-grid--simulator">
               <div class="field">
                 <label for="yardsToGo">Yards to go</label>
                 <input id="yardsToGo" name="yardsToGo" type="number" min="1" max="25" value="4">
@@ -83,18 +104,65 @@
                 <label for="timeRemaining">Time remaining</label>
                 <input id="timeRemaining" name="timeRemaining" type="text" value="08:42" pattern="[0-9]{1,2}:[0-9]{2}">
               </div>
-              <div class="field field--full">
+              <div class="field">
                 <label for="scoreDifferential">Score differential</label>
                 <input id="scoreDifferential" name="scoreDifferential" type="number" min="-30" max="30" value="-3">
               </div>
             </div>
-            <div class="button-row">
-              <button type="submit">Evaluate</button>
+
+            <section id="advancedInputs" class="advanced-panel" hidden>
+              <div class="advanced-panel__header">
+                <div>
+                  <p class="eyebrow">Advanced inputs</p>
+                  <h3>Optional context</h3>
+                </div>
+                <p class="muted">These are visible for testing now and ready for future model expansion.</p>
+              </div>
+              <div class="form-grid form-grid--simulator">
+                <div class="field">
+                  <label for="offenseTimeouts">Offense timeouts</label>
+                  <select id="offenseTimeouts" name="offenseTimeouts">
+                    <option value="3" selected>3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                    <option value="0">0</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="defenseTimeouts">Defense timeouts</label>
+                  <select id="defenseTimeouts" name="defenseTimeouts">
+                    <option value="3" selected>3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                    <option value="0">0</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="pregameSpread">Pregame spread</label>
+                  <input id="pregameSpread" name="pregameSpread" type="number" min="-30" max="30" step="0.5" value="-3">
+                </div>
+                <div class="field">
+                  <label for="overUnder">Over / under</label>
+                  <input id="overUnder" name="overUnder" type="number" min="20" max="90" step="0.5" value="52">
+                </div>
+                <div class="field field--full">
+                  <label for="receivesSecondHalfKickoff">Receives second-half kickoff?</label>
+                  <select id="receivesSecondHalfKickoff" name="receivesSecondHalfKickoff">
+                    <option value="yes" selected>Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+
+            <div class="button-row simulator-actions">
+              <button type="submit">Evaluate situation</button>
+              <button type="button" class="button-secondary" id="resetScenario">Reset defaults</button>
             </div>
           </form>
         </section>
 
-        <aside class="result-panel">
+        <aside class="result-panel simulator-panel simulator-panel--results">
           <p class="eyebrow">Model output</p>
           <h2>Recommendation</h2>
           <div id="fourth-down-output"></div>

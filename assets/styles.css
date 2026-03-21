@@ -409,6 +409,259 @@ select {
   }
 }
 
+.tool-layout--simulator {
+  align-items: start;
+}
+
+.simulator-panel {
+  padding: 1.6rem;
+}
+
+.simulator-panel__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.view-toggle {
+  display: inline-flex;
+  gap: 0.35rem;
+  padding: 0.25rem;
+  border-radius: 999px;
+  background: rgba(15, 95, 115, 0.08);
+}
+
+.view-toggle__button {
+  background: transparent;
+  color: var(--text-soft);
+  border: 0;
+  padding: 0.6rem 0.95rem;
+}
+
+.view-toggle__button.is-active {
+  background: var(--surface-strong);
+  color: var(--accent);
+  box-shadow: 0 6px 18px rgba(31, 42, 45, 0.08);
+}
+
+.form-grid--simulator {
+  margin-top: 1rem;
+}
+
+.field__topline {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.field--slider {
+  gap: 0.75rem;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(15, 95, 115, 0.05), rgba(255, 255, 255, 0.72));
+  border: 1px solid rgba(15, 95, 115, 0.12);
+}
+
+.yardline-display {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  text-align: right;
+}
+
+.yardline-display span {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.yardline-display strong {
+  font-family: "Fraunces", serif;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+input[type="range"] {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  accent-color: var(--accent);
+}
+
+.slider-scale {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.88rem;
+  color: var(--text-soft);
+}
+
+.advanced-panel {
+  margin-top: 1.2rem;
+  padding: 1.2rem;
+  border-radius: 18px;
+  border: 1px solid rgba(31, 42, 45, 0.1);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.advanced-panel__header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.simulator-actions {
+  margin-top: 1.25rem;
+}
+
+.result-hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1.2rem 1.25rem;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(15, 95, 115, 0.12), rgba(255, 255, 255, 0.92));
+  border: 1px solid rgba(15, 95, 115, 0.14);
+}
+
+.result-hero h3 {
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+}
+
+.result-hero__summary {
+  color: var(--text-soft);
+  margin-bottom: 0;
+}
+
+.result-hero__score {
+  min-width: 180px;
+  text-align: right;
+}
+
+.result-hero__score strong {
+  display: block;
+  font-family: "Fraunces", serif;
+  font-size: 2.3rem;
+  line-height: 1;
+  margin: 0.35rem 0;
+}
+
+.tool-summary--simulator {
+  margin-top: 0;
+}
+
+.decision-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.15rem 0;
+}
+
+.decision-card {
+  padding: 1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(31, 42, 45, 0.12);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.decision-card--best {
+  border-color: rgba(15, 95, 115, 0.3);
+  background: linear-gradient(180deg, rgba(15, 95, 115, 0.09), rgba(255, 255, 255, 0.88));
+  box-shadow: 0 14px 30px rgba(15, 95, 115, 0.08);
+}
+
+.decision-card__topline,
+.decision-card__support {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.decision-card__delta {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-soft);
+}
+
+.decision-card__value {
+  display: block;
+  margin: 0.35rem 0 0.8rem;
+  font-family: "Fraunces", serif;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.decision-card__support {
+  color: var(--text-soft);
+}
+
+.decision-card__support strong {
+  color: var(--text);
+}
+
+.explanation-panel {
+  padding-top: 0.5rem;
+}
+
+.explanation-panel__section {
+  margin-bottom: 1rem;
+}
+
+.decision-facts {
+  margin: 0.5rem 0 1rem;
+}
+
+.decision-fact {
+  padding: 1rem;
+}
+
+.decision-fact strong {
+  display: block;
+  font-family: "Fraunces", serif;
+  font-size: 1.45rem;
+}
+
+@media (max-width: 900px) {
+  .hero__grid > :first-child,
+  .split > :first-child,
+  .page-grid > :first-child,
+  .tool-layout > :first-child,
+  .hero__grid > :last-child,
+  .split > :last-child,
+  .page-grid > :last-child,
+  .tool-layout > :last-child {
+    grid-column: 1 / -1;
+  }
+
+  .card-grid,
+  .mini-grid,
+  .post-grid,
+  .tool-summary,
+  .form-grid,
+  .decision-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .simulator-panel__header,
+  .advanced-panel__header,
+  .result-hero,
+  .field__topline {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .result-hero__score,
+  .yardline-display {
+    text-align: left;
+  }
+}
+
 @media (max-width: 720px) {
   .site-header__inner,
   .site-footer__inner {
