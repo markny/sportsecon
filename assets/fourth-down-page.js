@@ -119,13 +119,14 @@
               <span class="implication-row__wp-label">Overall win probability</span>
             </div>
             <div class="implication-row__delta">
-              ${isBest ? "Best option" : toSignedPercent(-edge) + " vs best"}
+              ${isBest ? "" : toSignedPercent(-edge) + " vs best"}
             </div>
           </div>
           <div class="implication-row__details">
             ${detailHtml}
           </div>
         </div>
+        ${isBest ? '<span class="decision-badge">Best decision</span>' : ''}
       </article>
     `;
   }
@@ -160,9 +161,9 @@
           result.goForIt.winProbability,
           result.bestWinProbability,
           `
-            <div class="implication-stat"><span>Conversion probability</span><strong>${toPercent(result.goForIt.conversionRate)}</strong></div>
-            <div class="implication-stat"><span>Win probability if converted</span><strong>${toPercent(result.goForIt.successWinProbability)}</strong></div>
-            <div class="implication-stat"><span>Win probability if stopped</span><strong>${toPercent(result.goForIt.failureWinProbability)}</strong></div>
+            <div class="implication-stat implication-stat--neutral"><span>Conversion probability</span><strong>${toPercent(result.goForIt.conversionRate)}</strong></div>
+            <div class="implication-stat implication-stat--positive"><span>Win probability if converted</span><strong>${toPercent(result.goForIt.successWinProbability)}</strong></div>
+            <div class="implication-stat implication-stat--negative"><span>Win probability if stopped</span><strong>${toPercent(result.goForIt.failureWinProbability)}</strong></div>
           `,
           result.recommendation === "Go for It"
         )}
@@ -172,9 +173,9 @@
           result.fieldGoal.winProbability,
           result.bestWinProbability,
           `
-            <div class="implication-stat"><span>Kick profile</span><strong>${result.fieldGoal.distance} yd</strong></div>
-            <div class="implication-stat"><span>Win probability if made</span><strong>${toPercent(result.fieldGoal.makeWinProbability)}</strong></div>
-            <div class="implication-stat"><span>Win probability if missed</span><strong>${toPercent(result.fieldGoal.missWinProbability)}</strong></div>
+            <div class="implication-stat implication-stat--neutral"><span>Kick profile</span><strong>${result.fieldGoal.distance} yd</strong></div>
+            <div class="implication-stat implication-stat--positive"><span>Win probability if made</span><strong>${toPercent(result.fieldGoal.makeWinProbability)}</strong></div>
+            <div class="implication-stat implication-stat--negative"><span>Win probability if missed</span><strong>${toPercent(result.fieldGoal.missWinProbability)}</strong></div>
           `,
           result.recommendation === "Field Goal"
         )}
@@ -184,9 +185,9 @@
           result.punt.winProbability,
           result.bestWinProbability,
           `
-            <div class="implication-stat"><span>Opponent start</span><strong>Own ${result.punt.opponentStartYardLine}</strong></div>
-            <div class="implication-stat"><span>Punt win probability</span><strong>${toPercent(result.punt.winProbability)}</strong></div>
-            <div class="implication-stat"><span>Decision type</span><strong>Field-position play</strong></div>
+            <div class="implication-stat implication-stat--neutral"><span>Opponent start</span><strong>Own ${result.punt.opponentStartYardLine}</strong></div>
+            <div class="implication-stat implication-stat--neutral"><span>Punt win probability</span><strong>${toPercent(result.punt.winProbability)}</strong></div>
+            <div class="implication-stat implication-stat--neutral"><span>Decision type</span><strong>Field-position play</strong></div>
           `,
           result.recommendation === "Punt"
         )}

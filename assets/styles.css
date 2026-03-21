@@ -635,6 +635,8 @@ input[type="range"] {
 }
 
 .implication-row--best {
+  position: relative;
+  padding-top: 3rem;
   border-color: rgba(15, 95, 115, 0.3);
   background: linear-gradient(180deg, rgba(15, 95, 115, 0.09), rgba(255, 255, 255, 0.88));
   box-shadow: 0 14px 30px rgba(15, 95, 115, 0.08);
@@ -675,10 +677,40 @@ input[type="range"] {
   gap: 0.75rem;
 }
 
+.decision-badge {
+  position: absolute;
+  top: 0.9rem;
+  right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(15, 95, 115, 0.14);
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .implication-stat {
   padding: 0.85rem 0.9rem;
   border-radius: 14px;
   background: rgba(15, 95, 115, 0.05);
+}
+
+.implication-stat--neutral {
+  background: rgba(15, 95, 115, 0.05);
+}
+
+.implication-stat--positive {
+  background: rgba(43, 122, 91, 0.12);
+  border: 1px solid rgba(43, 122, 91, 0.14);
+}
+
+.implication-stat--negative {
+  background: rgba(184, 101, 44, 0.11);
+  border: 1px solid rgba(184, 101, 44, 0.14);
 }
 
 .implication-stat span {
