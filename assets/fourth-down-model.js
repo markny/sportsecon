@@ -548,6 +548,12 @@ function buildExplanation(input, recommendation, conversionProbability, adjustme
 
 function evaluateFourthDownDecision(rawInput) {
   const input = normalizeInput(rawInput);
+  const baselineWinProbability = estimateStateWinProbability({
+    offenseHasBall: true,
+    yardLine: input.yardLine,
+    scoreDifferential: input.scoreDifferential,
+    totalSecondsRemaining: getGameSecondsRemaining(input)
+  });
   const conversionRate = getSituationAdjustedConversionProbability(input);
   const successfulConversionYardLine = clamp(input.yardLine + input.yardsToGo, 1, 99);
   const goSuccessValue = interpolateExpectedPoints(successfulConversionYardLine);
@@ -631,6 +637,7 @@ function evaluateFourthDownDecision(rawInput) {
 
   return {
     context: input,
+    baselineWinProbability: baselineWinProbability,
     recommendation: bestOption.label,
     explanation: buildExplanation(
       input,

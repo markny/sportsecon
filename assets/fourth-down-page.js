@@ -106,8 +106,9 @@
     return values[0] - values[1];
   }
 
-  function getDecisionRow(label, overallWp, bestWp, detailHtml, isBest) {
+  function getDecisionRow(label, overallWp, baselineWp, bestWp, detailHtml, isBest) {
     const edge = bestWp - overallWp;
+    const deltaFromBaseline = overallWp - baselineWp;
 
     return `
       <article class="implication-row ${isBest ? "implication-row--best" : ""}">
@@ -118,8 +119,11 @@
               <strong class="implication-row__wp">${toPercent(overallWp)}</strong>
               <span class="implication-row__wp-label">Overall win probability</span>
             </div>
-            <div class="implication-row__delta">
-              ${isBest ? "" : toSignedPercent(-edge) + " vs best"}
+            <div class="implication-row__delta-group">
+              <div class="implication-row__delta implication-row__delta--baseline">
+                ${toSignedPercent(deltaFromBaseline)} from current state
+              </div>
+              ${isBest ? "" : `<div class="implication-row__delta">${toSignedPercent(-edge)} vs best</div>`}
             </div>
           </div>
           <div class="implication-row__details">
@@ -149,6 +153,7 @@
           <div>
             <p class="meta">Recommendation</p>
             <strong class="implication-panel__headline">${result.recommendation} at ${toPercent(result.bestWinProbability)} win probability</strong>
+            <p class="implication-panel__baseline">Current win probability before the decision: <strong>${toPercent(result.baselineWinProbability)}</strong></p>
           </div>
           <div class="implication-panel__edge">
             <span class="meta">Edge over next best</span>
@@ -159,6 +164,7 @@
         ${getDecisionRow(
           "Go for it",
           result.goForIt.winProbability,
+          result.baselineWinProbability,
           result.bestWinProbability,
           `
             <div class="implication-stat implication-stat--neutral"><span>Conversion probability</span><strong>${toPercent(result.goForIt.conversionRate)}</strong></div>
@@ -171,6 +177,7 @@
         ${getDecisionRow(
           "Field goal",
           result.fieldGoal.winProbability,
+          result.baselineWinProbability,
           result.bestWinProbability,
           `
             <div class="implication-stat implication-stat--neutral"><span>Kick profile</span><strong>${result.fieldGoal.distance} yd</strong></div>
@@ -183,6 +190,7 @@
         ${getDecisionRow(
           "Punt",
           result.punt.winProbability,
+          result.baselineWinProbability,
           result.bestWinProbability,
           `
             <div class="implication-stat implication-stat--neutral"><span>Opponent start</span><strong>${model.formatFieldPosition(result.punt.opponentStartYardLine)}</strong></div>

@@ -623,6 +623,17 @@ input[type="range"] {
   text-align: right;
 }
 
+.implication-panel__baseline {
+  margin-top: 0.45rem;
+  margin-bottom: 0;
+  color: var(--text-soft);
+}
+
+.implication-panel__baseline strong {
+  color: var(--text);
+  font-family: "Fraunces", serif;
+}
+
 .implication-panel__edge strong {
   font-size: 1.8rem;
 }
@@ -664,11 +675,22 @@ input[type="range"] {
   font-size: 0.88rem;
 }
 
+.implication-row__delta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
 .implication-row__delta {
   color: var(--text-soft);
   font-size: 0.92rem;
   font-weight: 700;
   text-align: right;
+}
+
+.implication-row__delta--baseline {
+  color: var(--accent);
 }
 
 .implication-row__details {
