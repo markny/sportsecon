@@ -36,6 +36,9 @@
             Explore go-for-it, punt, and field-goal decisions with the current Sportsecon model.
             This version is designed to make the model easier to test, compare, and challenge.
           </p>
+          <p class="muted">
+            Validation note: against the current cfb4th benchmark grid, the simulator matches the benchmark recommendation in 636 of 640 tested scenarios (99.4%). Probability differences are generally small, with mean absolute error of about 0.03 percentage points for go decisions and 0.07 percentage points for field goals. The advanced inputs are visible for future expansion, but the current live recommendation is driven by the core game-state inputs shown by default.
+          </p>
           <div class="subnav">
             <a href="/blog/fourth-down-beta/">Read the starter post</a>
             <a href="/tools/">Back to all tools</a>
@@ -136,7 +139,7 @@
                   <p class="eyebrow">Advanced inputs</p>
                   <h3>Optional context</h3>
                 </div>
-                <p class="muted">These are visible for testing now and ready for future model expansion.</p>
+                <p class="muted">These are visible for testing now and ready for future model expansion. They do not yet change the recommendation.</p>
               </div>
               <div class="form-grid form-grid--simulator">
                 <div class="field">
