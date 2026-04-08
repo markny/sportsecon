@@ -499,12 +499,31 @@ function getDenseSurfaceEstimate(input) {
 
 function estimatePuntFallbackFromSurface(input, result) {
   const lateGameAdjustments = getLateGameAdjustments(input);
-  const penalty = input.yardLine >= 70 ? 0.01 + (input.yardLine - 70) * 0.0015 : 0;
-  return clamp(
-    Math.max(result.goWinProb, result.fgWinProb) - 0.012 + lateGameAdjustments.punt - penalty,
-    0.01,
-    0.99
+  const goProbability = toFiniteNumber(result.goWinProb);
+  const fieldGoalProbability = toFiniteNumber(result.fgWinProb);
+  const bestKnownAlternative = Math.max(
+    goProbability == null ? 0 : goProbability,
+    fieldGoalProbability == null ? 0 : fieldGoalProbability
   );
+
+  const secondsRemaining = parseClock(input.timeRemaining);
+  let fallback = bestKnownAlternative - 0.012;
+
+  if (input.scoreDifferential > 0 && input.quarter === 4) {
+    const leadWeight = clamp(Math.min(input.scoreDifferential, 8) / 8, 0, 1);
+    const clockWeight = clamp((120 - secondsRemaining) / 120, 0, 1);
+    const territoryWeight = input.yardLine >= 70
+      ? clamp((input.yardLine - 70) / 15, 0, 1)
+      : 0;
+
+    fallback += 0.012 * leadWeight * clockWeight * territoryWeight;
+  }
+
+  if (input.yardLine >= 70) {
+    fallback -= 0.01 + (input.yardLine - 70) * 0.0015;
+  }
+
+  return clamp(fallback + lateGameAdjustments.punt, 0.01, 0.99);
 }
 
 function buildExplanation(input, recommendation, conversionProbability, adjustments, fieldGoalDistance, winProbabilities, provenanceLabel) {
