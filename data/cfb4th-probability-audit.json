@@ -1,0 +1,512 @@
+{
+  "recommendationAgreement": "636/640",
+  "metrics": {
+    "goWP": {
+      "count": 640,
+      "mean": 0.00032679687500000016,
+      "p50": 0,
+      "p90": 0.0011999999999999789,
+      "p95": 0.0017500000000000293,
+      "max": 0.005099999999999993
+    },
+    "puntWP": {
+      "count": 384,
+      "mean": 0.00007291666666667415,
+      "p50": 0.00004999999999999449,
+      "p90": 0.000150000000000039,
+      "p95": 0.00019999999999997797,
+      "max": 0.0005999999999999339
+    },
+    "fgWP": {
+      "count": 640,
+      "mean": 0.0007381250000000007,
+      "p50": 0,
+      "p90": 0.0025500000000000522,
+      "p95": 0.0040999999999999925,
+      "max": 0.008900000000000019
+    },
+    "firstDownProb": {
+      "count": 640,
+      "mean": 0.0008150000000000133,
+      "p50": 0,
+      "p90": 0.0025500000000000522,
+      "p95": 0.0026000000000000467,
+      "max": 0.0044500000000000095
+    },
+    "fgMakeProb": {
+      "count": 640,
+      "mean": 0,
+      "p50": 0,
+      "p90": 0,
+      "p95": 0,
+      "max": 0
+    }
+  },
+  "goByQuarter": {
+    "Q2": 0.0002635937499999998,
+    "Q4": 0.0003900000000000005
+  },
+  "fgByQuarter": {
+    "Q2": 0.0006643750000000014,
+    "Q4": 0.0008118750000000001
+  },
+  "puntByQuarter": {
+    "Q2": 0.00005625000000001693,
+    "Q4": 0.00008958333333333138
+  },
+  "goByField": {
+    "own-side": 0.00036445312499999857,
+    "midfield": 0.001269531250000002,
+    "fringe-plus": 0,
+    "plus-territory": 0
+  },
+  "fgByField": {
+    "own-side": 0.0015718750000000045,
+    "midfield": 0.0021187499999999995,
+    "fringe-plus": 0,
+    "plus-territory": 0
+  },
+  "puntByField": {
+    "own-side": 0.00007187500000000813,
+    "midfield": 0.00014687500000001434,
+    "fringe-plus": 0,
+    "plus-territory": null
+  },
+  "goByGameState": {
+    "trailing": 0.00029312500000000025,
+    "tied": 0.0003915624999999968,
+    "leading": 0.0003293750000000033
+  },
+  "fgByGameState": {
+    "trailing": 0.00039812499999999863,
+    "tied": 0.0010800000000000046,
+    "leading": 0.0010762500000000008
+  },
+  "puntByGameState": {
+    "trailing": 0.000054166666666670926,
+    "tied": 0.00012291666666667625,
+    "leading": 0.00006041666666667852
+  },
+  "worst": [
+    {
+      "id": "G437",
+      "input": {
+        "yardLine": 45,
+        "yardsToGo": 7,
+        "quarter": 4,
+        "timeRemaining": "03:00",
+        "scoreDifferential": 0
+      },
+      "recMatch": true,
+      "rec": "Punt",
+      "targetRec": "Punt",
+      "meanComparable": 0.0048666666666666485,
+      "diffs": {
+        "go": 0.005099999999999993,
+        "punt": 0.0005999999999999339,
+        "fg": 0.008900000000000019,
+        "firstDown": 0.0044500000000000095,
+        "fgMake": 0
+      }
+    },
+    {
+      "id": "G432",
+      "input": {
+        "yardLine": 45,
+        "yardsToGo": 4,
+        "quarter": 4,
+        "timeRemaining": "03:00",
+        "scoreDifferential": 0
+      },
+      "recMatch": true,
+      "rec": "Punt",
+      "targetRec": "Punt",
+      "meanComparable": 0.004466666666666656,
+      "diffs": {
+        "go": 0.0039000000000000146,
+        "punt": 0.0005999999999999339,
+        "fg": 0.008900000000000019,
+        "firstDown": 0.0025500000000000522,
+        "fgMake": 0
+      }
+    },
+    {
+      "id": "G462",
+      "input": {
+        "yardLine": 45,
+        "yardsToGo": 1,
+        "quarter": 4,
+        "timeRemaining": "01:30",
+        "scoreDifferential": 0
+      },
+      "recMatch": true,
+      "rec": "Go for It",
+      "targetRec": "Go for It",
+      "meanComparable": 0.003483333333333357,
+      "diffs": {
+        "go": 0.003250000000000086,
+        "punt": 0.00030000000000002247,
+        "fg": 0.006899999999999962,
+        "firstDown": 0.0026000000000000467,
+        "fgMake": 0
+      }
+    },
+    {
+      "id": "G467",
+      "input": {
+        "yardLine": 45,
+        "yardsToGo": 2,
+        "quarter": 4,
+        "timeRemaining": "01:30",
+        "scoreDifferential": 0
+      },
+      "recMatch": true,
+      "rec": "Go for It",
+      "targetRec": "Go for It",
+      "meanComparable": 0.003433333333333325,
+      "diffs": {
+        "go": 0.0030999999999999917,
+        "punt": 0.00030000000000002247,
+        "fg": 0.006899999999999962,
+        "firstDown": 0.0022500000000000853,
+        "fgMake": 0
+      }
+    },
+    {
+      "id": "G427",
+      "input": {
+        "yardLine": 45,
+        "yardsToGo": 2,
+        "quarter": 4,
+        "timeRemaining": "03:00",
+        "scoreDifferential": 0
+      },
+      "recMatch": true,
+      "rec": "Go for It",
+      "targetRec": "Go for It",
+      "meanComparable": 0.00326666666666664,
+      "diffs": {
+        "go": 0.00029999999999996696,
+        "punt": 0.0005999999999999339,
+        "fg": 0.008900000000000019,
+        "firstDown": 0.0022500000000000853,
+        "fgMake": 0
+      }
+    },
+    {
+      "id": "G422",
+      "input": {
+        "yardLine": 45,
+        "yardsToGo": 1,
+        "quarter": 4,
+        "timeRemaining": "03:00",
+        "scoreDifferential": 0
+      },
+      "recMatch": true,
+      "rec": "Go for It",
+      "targetRec": "Go for It",
+      "meanComparable": 0.003249999999999975,
+      "diffs": {
+        "go": 0.00024999999999997247,
+        "punt": 0.0005999999999999339,
+        "fg": 0.008900000000000019,
+        "firstDown": 0.0026000000000000467,
+        "fgMake": 0
+      }
+    },
+    {
+      "id": "G297",
+      "input": {
+        "yardLine": 45,
+        "yardsToGo": 7,
+        "quarter": 2,
+        "timeRemaining": "01:30",
+        "scoreDifferential": -3
+      },
+      "recMatch": true,
+      "rec": "Go for It",
+      "targetRec": "Go for It",
+      "meanComparable": 0.0031833333333333527,
+      "diffs": {
+        "go": 0.0033500000000000196,
+        "punt": 0.0001000000000000445,
+        "fg": 0.006099999999999994,
+        "firstDown": 0.0044500000000000095,
+        "fgMake": 0
+      }
+    },
+    {
+      "id": "G471",
+      "input": {
+        "yardLine": 35,
+        "yardsToGo": 4,
+        "quarter": 4,
+        "timeRemaining": "01:30",
+        "scoreDifferential": 0
+      },
+      "recMatch": true,
+      "rec": "Go for It",
+      "targetRec": "Go for It",
+      "meanComparable": 0.002933333333333362,
+      "diffs": {
+        "go": 0.0023000000000000242,
+        "punt": 5.551115123125783e-17,
+        "fg": 0.006500000000000006,
+        "firstDown": 0.0009500000000000064,
+        "fgMake": 0
+      }
+    },
+    {
+      "id": "G292",
+      "input": {
+        "yardLine": 45,
+        "yardsToGo": 4,
+        "quarter": 2,
+        "timeRemaining": "01:30",
+        "scoreDifferential": -3
+      },
+      "recMatch": true,
+      "rec": "Go for It",
+      "targetRec": "Go for It",
+      "meanComparable": 0.0028666666666666654,
+      "diffs": {
+        "go": 0.0023999999999999577,
+        "punt": 0.0001000000000000445,
+        "fg": 0.006099999999999994,
+        "firstDown": 0.0025500000000000522,
+        "fgMake": 0
+      }
+    },
+    {
+      "id": "G476",
+      "input": {
+        "yardLine": 35,
+        "yardsToGo": 7,
+        "quarter": 4,
+        "timeRemaining": "01:30",
+        "scoreDifferential": 0
+      },
+      "recMatch": true,
+      "rec": "Go for It",
+      "targetRec": "Go for It",
+      "meanComparable": 0.002850000000000019,
+      "diffs": {
+        "go": 0.0020499999999999963,
+        "punt": 5.551115123125783e-17,
+        "fg": 0.006500000000000006,
+        "firstDown": 0.00019999999999997797,
+        "fgMake": 0
+      }
+    },
+    {
+      "id": "G557",
+      "input": {
+        "yardLine": 45,
+        "yardsToGo": 7,
+        "quarter": 4,
+        "timeRemaining": "08:00",
+        "scoreDifferential": 3
+      },
+      "recMatch": true,
+      "rec": "Punt",
+      "targetRec": "Punt",
+      "meanComparable": 0.0026999999999999615,
+      "diffs": {
+        "go": 0.002849999999999908,
+        "punt": 0.00019999999999997797,
+        "fg": 0.005049999999999999,
+        "firstDown": 0.0044500000000000095,
+        "fgMake": 0
+      }
+    },
+    {
+      "id": "G472",
+      "input": {
+        "yardLine": 45,
+        "yardsToGo": 4,
+        "quarter": 4,
+        "timeRemaining": "01:30",
+        "scoreDifferential": 0
+      },
+      "recMatch": true,
+      "rec": "Go for It",
+      "targetRec": "Go for It",
+      "meanComparable": 0.0026166666666666747,
+      "diffs": {
+        "go": 0.0006500000000000394,
+        "punt": 0.00030000000000002247,
+        "fg": 0.006899999999999962,
+        "firstDown": 0.0025500000000000522,
+        "fgMake": 0
+      }
+    },
+    {
+      "id": "G477",
+      "input": {
+        "yardLine": 45,
+        "yardsToGo": 7,
+        "quarter": 4,
+        "timeRemaining": "01:30",
+        "scoreDifferential": 0
+      },
+      "recMatch": true,
+      "rec": "Go for It",
+      "targetRec": "Go for It",
+      "meanComparable": 0.0024166666666666594,
+      "diffs": {
+        "go": 0.00004999999999999449,
+        "punt": 0.00030000000000002247,
+        "fg": 0.006899999999999962,
+        "firstDown": 0.0044500000000000095,
+        "fgMake": 0
+      }
+    },
+    {
+      "id": "G466",
+      "input": {
+        "yardLine": 35,
+        "yardsToGo": 2,
+        "quarter": 4,
+        "timeRemaining": "01:30",
+        "scoreDifferential": 0
+      },
+      "recMatch": true,
+      "rec": "Go for It",
+      "targetRec": "Go for It",
+      "meanComparable": 0.002400000000000032,
+      "diffs": {
+        "go": 0.0007000000000000339,
+        "punt": 5.551115123125783e-17,
+        "fg": 0.006500000000000006,
+        "firstDown": 0.0010499999999999954,
+        "fgMake": 0
+      }
+    },
+    {
+      "id": "G552",
+      "input": {
+        "yardLine": 45,
+        "yardsToGo": 4,
+        "quarter": 4,
+        "timeRemaining": "08:00",
+        "scoreDifferential": 3
+      },
+      "recMatch": true,
+      "rec": "Punt",
+      "targetRec": "Punt",
+      "meanComparable": 0.0023999999999999946,
+      "diffs": {
+        "go": 0.0019500000000000073,
+        "punt": 0.00019999999999997797,
+        "fg": 0.005049999999999999,
+        "firstDown": 0.0025500000000000522,
+        "fgMake": 0
+      }
+    },
+    {
+      "id": "G461",
+      "input": {
+        "yardLine": 35,
+        "yardsToGo": 1,
+        "quarter": 4,
+        "timeRemaining": "01:30",
+        "scoreDifferential": 0
+      },
+      "recMatch": true,
+      "rec": "Go for It",
+      "targetRec": "Go for It",
+      "meanComparable": 0.0023000000000000056,
+      "diffs": {
+        "go": 0.00039999999999995595,
+        "punt": 5.551115123125783e-17,
+        "fg": 0.006500000000000006,
+        "firstDown": 0.0022500000000000853,
+        "fgMake": 0
+      }
+    },
+    {
+      "id": "G637",
+      "input": {
+        "yardLine": 45,
+        "yardsToGo": 7,
+        "quarter": 4,
+        "timeRemaining": "01:30",
+        "scoreDifferential": 3
+      },
+      "recMatch": true,
+      "rec": "Go for It",
+      "targetRec": "Go for It",
+      "meanComparable": 0.0022833333333333408,
+      "diffs": {
+        "go": 0.002650000000000041,
+        "punt": 0.00009999999999998899,
+        "fg": 0.0040999999999999925,
+        "firstDown": 0.0044500000000000095,
+        "fgMake": 0
+      }
+    },
+    {
+      "id": "G282",
+      "input": {
+        "yardLine": 45,
+        "yardsToGo": 1,
+        "quarter": 2,
+        "timeRemaining": "01:30",
+        "scoreDifferential": -3
+      },
+      "recMatch": true,
+      "rec": "Go for It",
+      "targetRec": "Go for It",
+      "meanComparable": 0.0021666666666666687,
+      "diffs": {
+        "go": 0.00029999999999996696,
+        "punt": 0.0001000000000000445,
+        "fg": 0.006099999999999994,
+        "firstDown": 0.0026000000000000467,
+        "fgMake": 0
+      }
+    },
+    {
+      "id": "G596",
+      "input": {
+        "yardLine": 35,
+        "yardsToGo": 7,
+        "quarter": 4,
+        "timeRemaining": "03:00",
+        "scoreDifferential": 3
+      },
+      "recMatch": true,
+      "rec": "Punt",
+      "targetRec": "Punt",
+      "meanComparable": 0.002083333333333326,
+      "diffs": {
+        "go": 0.0016000000000000458,
+        "punt": 0.00014999999999998348,
+        "fg": 0.0044999999999999485,
+        "firstDown": 0.00019999999999997797,
+        "fgMake": 0
+      }
+    },
+    {
+      "id": "G287",
+      "input": {
+        "yardLine": 45,
+        "yardsToGo": 2,
+        "quarter": 2,
+        "timeRemaining": "01:30",
+        "scoreDifferential": -3
+      },
+      "recMatch": true,
+      "rec": "Go for It",
+      "targetRec": "Go for It",
+      "meanComparable": 0.0020666666666666797,
+      "diffs": {
+        "go": 0,
+        "punt": 0.0001000000000000445,
+        "fg": 0.006099999999999994,
+        "firstDown": 0.0022500000000000853,
+        "fgMake": 0
+      }
+    }
+  ]
+}
