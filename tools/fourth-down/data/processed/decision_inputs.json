@@ -1,0 +1,2222 @@
+{
+  "generated_at": "2026-04-11 19:45:00 UTC",
+  "seasons": [2020, 2021, 2022, 2023, 2024, 2025],
+  "smoothing": {
+    "method": "empirical_bayes_plus_local_pooling",
+    "notes": {
+      "conversion": "Shrink each field-position bucket toward the yards-to-go prior.",
+      "short_go": "For 4th-and-1/2, smooth conversion, touchdown, and post-play field-position outcomes toward the yards-to-go prior.",
+      "field_goal": "Use a short moving window by kick distance, then shrink toward the global make rate.",
+      "punt": "Shrink sparse field-position bins toward the overall punt average.",
+      "win_probability": "Shrink each field-position bin toward its score/time prior."
+    }
+  },
+  "conversion": [
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 0,
+      "attempts": 264,
+      "raw_conversion_rate": 0.5985,
+      "smoothed_conversion_rate": 0.6055
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 5,
+      "attempts": 100,
+      "raw_conversion_rate": 0.65,
+      "smoothed_conversion_rate": 0.6558
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 10,
+      "attempts": 88,
+      "raw_conversion_rate": 0.7159,
+      "smoothed_conversion_rate": 0.7078
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 15,
+      "attempts": 104,
+      "raw_conversion_rate": 0.6827,
+      "smoothed_conversion_rate": 0.682
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 20,
+      "attempts": 83,
+      "raw_conversion_rate": 0.6145,
+      "smoothed_conversion_rate": 0.6294
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 25,
+      "attempts": 117,
+      "raw_conversion_rate": 0.6838,
+      "smoothed_conversion_rate": 0.6829
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 30,
+      "attempts": 111,
+      "raw_conversion_rate": 0.6757,
+      "smoothed_conversion_rate": 0.6763
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 35,
+      "attempts": 170,
+      "raw_conversion_rate": 0.7118,
+      "smoothed_conversion_rate": 0.7076
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 40,
+      "attempts": 139,
+      "raw_conversion_rate": 0.7266,
+      "smoothed_conversion_rate": 0.7194
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 45,
+      "attempts": 133,
+      "raw_conversion_rate": 0.7218,
+      "smoothed_conversion_rate": 0.715
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 50,
+      "attempts": 151,
+      "raw_conversion_rate": 0.7219,
+      "smoothed_conversion_rate": 0.7158
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 55,
+      "attempts": 107,
+      "raw_conversion_rate": 0.6542,
+      "smoothed_conversion_rate": 0.6589
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 60,
+      "attempts": 93,
+      "raw_conversion_rate": 0.6774,
+      "smoothed_conversion_rate": 0.6778
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 65,
+      "attempts": 123,
+      "raw_conversion_rate": 0.6829,
+      "smoothed_conversion_rate": 0.6823
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 70,
+      "attempts": 47,
+      "raw_conversion_rate": 0.7447,
+      "smoothed_conversion_rate": 0.7219
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 75,
+      "attempts": 9,
+      "raw_conversion_rate": 0.5556,
+      "smoothed_conversion_rate": 0.6464
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 80,
+      "attempts": 16,
+      "raw_conversion_rate": 0.8125,
+      "smoothed_conversion_rate": 0.7311
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 85,
+      "attempts": 2,
+      "raw_conversion_rate": 0.5,
+      "smoothed_conversion_rate": 0.6658
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 0,
+      "attempts": 109,
+      "raw_conversion_rate": 0.5413,
+      "smoothed_conversion_rate": 0.551
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 5,
+      "attempts": 39,
+      "raw_conversion_rate": 0.5385,
+      "smoothed_conversion_rate": 0.5599
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 10,
+      "attempts": 27,
+      "raw_conversion_rate": 0.7778,
+      "smoothed_conversion_rate": 0.6891
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 15,
+      "attempts": 32,
+      "raw_conversion_rate": 0.7188,
+      "smoothed_conversion_rate": 0.6637
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 20,
+      "attempts": 28,
+      "raw_conversion_rate": 0.6786,
+      "smoothed_conversion_rate": 0.6384
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 25,
+      "attempts": 57,
+      "raw_conversion_rate": 0.5965,
+      "smoothed_conversion_rate": 0.5955
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 30,
+      "attempts": 51,
+      "raw_conversion_rate": 0.549,
+      "smoothed_conversion_rate": 0.5636
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 35,
+      "attempts": 67,
+      "raw_conversion_rate": 0.597,
+      "smoothed_conversion_rate": 0.596
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 40,
+      "attempts": 87,
+      "raw_conversion_rate": 0.6552,
+      "smoothed_conversion_rate": 0.6414
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 45,
+      "attempts": 53,
+      "raw_conversion_rate": 0.566,
+      "smoothed_conversion_rate": 0.5748
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 50,
+      "attempts": 33,
+      "raw_conversion_rate": 0.5758,
+      "smoothed_conversion_rate": 0.5833
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 55,
+      "attempts": 37,
+      "raw_conversion_rate": 0.5676,
+      "smoothed_conversion_rate": 0.578
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 60,
+      "attempts": 18,
+      "raw_conversion_rate": 0.3333,
+      "smoothed_conversion_rate": 0.4845
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 65,
+      "attempts": 30,
+      "raw_conversion_rate": 0.5667,
+      "smoothed_conversion_rate": 0.5788
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 70,
+      "attempts": 8,
+      "raw_conversion_rate": 0.5,
+      "smoothed_conversion_rate": 0.5707
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 75,
+      "attempts": 8,
+      "raw_conversion_rate": 0.75,
+      "smoothed_conversion_rate": 0.6313
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 80,
+      "attempts": 6,
+      "raw_conversion_rate": 0.6667,
+      "smoothed_conversion_rate": 0.6075
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 85,
+      "attempts": 1,
+      "raw_conversion_rate": 1,
+      "smoothed_conversion_rate": 0.609
+    },
+    {
+      "ydstogo_bucket": 3,
+      "field_pos_bucket": 0,
+      "attempts": 57,
+      "raw_conversion_rate": 0.386,
+      "smoothed_conversion_rate": 0.4235
+    },
+    {
+      "ydstogo_bucket": 3,
+      "field_pos_bucket": 5,
+      "attempts": 20,
+      "raw_conversion_rate": 0.4,
+      "smoothed_conversion_rate": 0.4607
+    },
+    {
+      "ydstogo_bucket": 3,
+      "field_pos_bucket": 10,
+      "attempts": 23,
+      "raw_conversion_rate": 0.4348,
+      "smoothed_conversion_rate": 0.4735
+    },
+    {
+      "ydstogo_bucket": 3,
+      "field_pos_bucket": 15,
+      "attempts": 17,
+      "raw_conversion_rate": 0.5882,
+      "smoothed_conversion_rate": 0.5412
+    },
+    {
+      "ydstogo_bucket": 3,
+      "field_pos_bucket": 20,
+      "attempts": 22,
+      "raw_conversion_rate": 0.4091,
+      "smoothed_conversion_rate": 0.4623
+    },
+    {
+      "ydstogo_bucket": 3,
+      "field_pos_bucket": 25,
+      "attempts": 21,
+      "raw_conversion_rate": 0.5714,
+      "smoothed_conversion_rate": 0.5376
+    },
+    {
+      "ydstogo_bucket": 3,
+      "field_pos_bucket": 30,
+      "attempts": 41,
+      "raw_conversion_rate": 0.439,
+      "smoothed_conversion_rate": 0.4656
+    },
+    {
+      "ydstogo_bucket": 3,
+      "field_pos_bucket": 35,
+      "attempts": 62,
+      "raw_conversion_rate": 0.6129,
+      "smoothed_conversion_rate": 0.5831
+    },
+    {
+      "ydstogo_bucket": 3,
+      "field_pos_bucket": 40,
+      "attempts": 61,
+      "raw_conversion_rate": 0.623,
+      "smoothed_conversion_rate": 0.5899
+    },
+    {
+      "ydstogo_bucket": 3,
+      "field_pos_bucket": 45,
+      "attempts": 33,
+      "raw_conversion_rate": 0.4848,
+      "smoothed_conversion_rate": 0.4953
+    },
+    {
+      "ydstogo_bucket": 3,
+      "field_pos_bucket": 50,
+      "attempts": 23,
+      "raw_conversion_rate": 0.3478,
+      "smoothed_conversion_rate": 0.4319
+    },
+    {
+      "ydstogo_bucket": 3,
+      "field_pos_bucket": 55,
+      "attempts": 14,
+      "raw_conversion_rate": 0.5,
+      "smoothed_conversion_rate": 0.5059
+    },
+    {
+      "ydstogo_bucket": 3,
+      "field_pos_bucket": 60,
+      "attempts": 16,
+      "raw_conversion_rate": 0.5,
+      "smoothed_conversion_rate": 0.5056
+    },
+    {
+      "ydstogo_bucket": 3,
+      "field_pos_bucket": 65,
+      "attempts": 12,
+      "raw_conversion_rate": 0.6667,
+      "smoothed_conversion_rate": 0.5603
+    },
+    {
+      "ydstogo_bucket": 3,
+      "field_pos_bucket": 70,
+      "attempts": 7,
+      "raw_conversion_rate": 0.5714,
+      "smoothed_conversion_rate": 0.5228
+    },
+    {
+      "ydstogo_bucket": 3,
+      "field_pos_bucket": 75,
+      "attempts": 1,
+      "raw_conversion_rate": 1,
+      "smoothed_conversion_rate": 0.5281
+    },
+    {
+      "ydstogo_bucket": 3,
+      "field_pos_bucket": 80,
+      "attempts": 2,
+      "raw_conversion_rate": 1,
+      "smoothed_conversion_rate": 0.5455
+    },
+    {
+      "ydstogo_bucket": 3,
+      "field_pos_bucket": 85,
+      "attempts": 3,
+      "raw_conversion_rate": 1,
+      "smoothed_conversion_rate": 0.5618
+    },
+    {
+      "ydstogo_bucket": 3,
+      "field_pos_bucket": 90,
+      "attempts": 1,
+      "raw_conversion_rate": 0,
+      "smoothed_conversion_rate": 0.4896
+    },
+    {
+      "ydstogo_bucket": 4,
+      "field_pos_bucket": 0,
+      "attempts": 31,
+      "raw_conversion_rate": 0.5806,
+      "smoothed_conversion_rate": 0.5519
+    },
+    {
+      "ydstogo_bucket": 4,
+      "field_pos_bucket": 5,
+      "attempts": 15,
+      "raw_conversion_rate": 0.4,
+      "smoothed_conversion_rate": 0.4727
+    },
+    {
+      "ydstogo_bucket": 4,
+      "field_pos_bucket": 10,
+      "attempts": 15,
+      "raw_conversion_rate": 0.5333,
+      "smoothed_conversion_rate": 0.5227
+    },
+    {
+      "ydstogo_bucket": 4,
+      "field_pos_bucket": 15,
+      "attempts": 11,
+      "raw_conversion_rate": 0.4545,
+      "smoothed_conversion_rate": 0.4974
+    },
+    {
+      "ydstogo_bucket": 4,
+      "field_pos_bucket": 20,
+      "attempts": 17,
+      "raw_conversion_rate": 0.6471,
+      "smoothed_conversion_rate": 0.5692
+    },
+    {
+      "ydstogo_bucket": 4,
+      "field_pos_bucket": 25,
+      "attempts": 17,
+      "raw_conversion_rate": 0.5294,
+      "smoothed_conversion_rate": 0.5216
+    },
+    {
+      "ydstogo_bucket": 4,
+      "field_pos_bucket": 30,
+      "attempts": 29,
+      "raw_conversion_rate": 0.4828,
+      "smoothed_conversion_rate": 0.4983
+    },
+    {
+      "ydstogo_bucket": 4,
+      "field_pos_bucket": 35,
+      "attempts": 49,
+      "raw_conversion_rate": 0.551,
+      "smoothed_conversion_rate": 0.5393
+    },
+    {
+      "ydstogo_bucket": 4,
+      "field_pos_bucket": 40,
+      "attempts": 41,
+      "raw_conversion_rate": 0.5366,
+      "smoothed_conversion_rate": 0.5289
+    },
+    {
+      "ydstogo_bucket": 4,
+      "field_pos_bucket": 45,
+      "attempts": 28,
+      "raw_conversion_rate": 0.5714,
+      "smoothed_conversion_rate": 0.5454
+    },
+    {
+      "ydstogo_bucket": 4,
+      "field_pos_bucket": 50,
+      "attempts": 20,
+      "raw_conversion_rate": 0.5,
+      "smoothed_conversion_rate": 0.5091
+    },
+    {
+      "ydstogo_bucket": 4,
+      "field_pos_bucket": 55,
+      "attempts": 19,
+      "raw_conversion_rate": 0.4737,
+      "smoothed_conversion_rate": 0.4979
+    },
+    {
+      "ydstogo_bucket": 4,
+      "field_pos_bucket": 60,
+      "attempts": 17,
+      "raw_conversion_rate": 0.3529,
+      "smoothed_conversion_rate": 0.4502
+    },
+    {
+      "ydstogo_bucket": 4,
+      "field_pos_bucket": 65,
+      "attempts": 12,
+      "raw_conversion_rate": 0.3333,
+      "smoothed_conversion_rate": 0.457
+    },
+    {
+      "ydstogo_bucket": 4,
+      "field_pos_bucket": 70,
+      "attempts": 9,
+      "raw_conversion_rate": 0.5556,
+      "smoothed_conversion_rate": 0.5267
+    },
+    {
+      "ydstogo_bucket": 4,
+      "field_pos_bucket": 75,
+      "attempts": 2,
+      "raw_conversion_rate": 0.5,
+      "smoothed_conversion_rate": 0.5151
+    },
+    {
+      "ydstogo_bucket": 4,
+      "field_pos_bucket": 85,
+      "attempts": 4,
+      "raw_conversion_rate": 0.75,
+      "smoothed_conversion_rate": 0.5486
+    },
+    {
+      "ydstogo_bucket": 4,
+      "field_pos_bucket": 90,
+      "attempts": 1,
+      "raw_conversion_rate": 0,
+      "smoothed_conversion_rate": 0.4965
+    },
+    {
+      "ydstogo_bucket": 5,
+      "field_pos_bucket": 5,
+      "attempts": 26,
+      "raw_conversion_rate": 0.3077,
+      "smoothed_conversion_rate": 0.3982
+    },
+    {
+      "ydstogo_bucket": 5,
+      "field_pos_bucket": 10,
+      "attempts": 8,
+      "raw_conversion_rate": 0.25,
+      "smoothed_conversion_rate": 0.4336
+    },
+    {
+      "ydstogo_bucket": 5,
+      "field_pos_bucket": 15,
+      "attempts": 12,
+      "raw_conversion_rate": 0.6667,
+      "smoothed_conversion_rate": 0.5489
+    },
+    {
+      "ydstogo_bucket": 5,
+      "field_pos_bucket": 20,
+      "attempts": 5,
+      "raw_conversion_rate": 0.8,
+      "smoothed_conversion_rate": 0.5436
+    },
+    {
+      "ydstogo_bucket": 5,
+      "field_pos_bucket": 25,
+      "attempts": 16,
+      "raw_conversion_rate": 0.5625,
+      "smoothed_conversion_rate": 0.5197
+    },
+    {
+      "ydstogo_bucket": 5,
+      "field_pos_bucket": 30,
+      "attempts": 29,
+      "raw_conversion_rate": 0.4138,
+      "smoothed_conversion_rate": 0.4501
+    },
+    {
+      "ydstogo_bucket": 5,
+      "field_pos_bucket": 35,
+      "attempts": 33,
+      "raw_conversion_rate": 0.3939,
+      "smoothed_conversion_rate": 0.4363
+    },
+    {
+      "ydstogo_bucket": 5,
+      "field_pos_bucket": 40,
+      "attempts": 36,
+      "raw_conversion_rate": 0.5,
+      "smoothed_conversion_rate": 0.4968
+    },
+    {
+      "ydstogo_bucket": 5,
+      "field_pos_bucket": 45,
+      "attempts": 21,
+      "raw_conversion_rate": 0.5238,
+      "smoothed_conversion_rate": 0.5067
+    },
+    {
+      "ydstogo_bucket": 5,
+      "field_pos_bucket": 50,
+      "attempts": 17,
+      "raw_conversion_rate": 0.7059,
+      "smoothed_conversion_rate": 0.5788
+    },
+    {
+      "ydstogo_bucket": 5,
+      "field_pos_bucket": 55,
+      "attempts": 10,
+      "raw_conversion_rate": 0.8,
+      "smoothed_conversion_rate": 0.5802
+    },
+    {
+      "ydstogo_bucket": 5,
+      "field_pos_bucket": 60,
+      "attempts": 8,
+      "raw_conversion_rate": 0.375,
+      "smoothed_conversion_rate": 0.4639
+    },
+    {
+      "ydstogo_bucket": 5,
+      "field_pos_bucket": 65,
+      "attempts": 11,
+      "raw_conversion_rate": 0.6364,
+      "smoothed_conversion_rate": 0.5363
+    },
+    {
+      "ydstogo_bucket": 5,
+      "field_pos_bucket": 70,
+      "attempts": 19,
+      "raw_conversion_rate": 0.5263,
+      "smoothed_conversion_rate": 0.507
+    },
+    {
+      "ydstogo_bucket": 5,
+      "field_pos_bucket": 75,
+      "attempts": 4,
+      "raw_conversion_rate": 0.5,
+      "smoothed_conversion_rate": 0.4934
+    },
+    {
+      "ydstogo_bucket": 5,
+      "field_pos_bucket": 80,
+      "attempts": 3,
+      "raw_conversion_rate": 0,
+      "smoothed_conversion_rate": 0.4396
+    },
+    {
+      "ydstogo_bucket": 5,
+      "field_pos_bucket": 85,
+      "attempts": 2,
+      "raw_conversion_rate": 0.5,
+      "smoothed_conversion_rate": 0.4929
+    },
+    {
+      "ydstogo_bucket": 6,
+      "field_pos_bucket": 5,
+      "attempts": 16,
+      "raw_conversion_rate": 0.25,
+      "smoothed_conversion_rate": 0.3472
+    },
+    {
+      "ydstogo_bucket": 6,
+      "field_pos_bucket": 10,
+      "attempts": 5,
+      "raw_conversion_rate": 0.2,
+      "smoothed_conversion_rate": 0.3745
+    },
+    {
+      "ydstogo_bucket": 6,
+      "field_pos_bucket": 15,
+      "attempts": 6,
+      "raw_conversion_rate": 0.6667,
+      "smoothed_conversion_rate": 0.4592
+    },
+    {
+      "ydstogo_bucket": 6,
+      "field_pos_bucket": 20,
+      "attempts": 9,
+      "raw_conversion_rate": 0.1111,
+      "smoothed_conversion_rate": 0.3304
+    },
+    {
+      "ydstogo_bucket": 6,
+      "field_pos_bucket": 25,
+      "attempts": 7,
+      "raw_conversion_rate": 0.5714,
+      "smoothed_conversion_rate": 0.4448
+    },
+    {
+      "ydstogo_bucket": 6,
+      "field_pos_bucket": 30,
+      "attempts": 13,
+      "raw_conversion_rate": 0.3077,
+      "smoothed_conversion_rate": 0.3746
+    },
+    {
+      "ydstogo_bucket": 6,
+      "field_pos_bucket": 35,
+      "attempts": 28,
+      "raw_conversion_rate": 0.4286,
+      "smoothed_conversion_rate": 0.4195
+    },
+    {
+      "ydstogo_bucket": 6,
+      "field_pos_bucket": 40,
+      "attempts": 16,
+      "raw_conversion_rate": 0.5,
+      "smoothed_conversion_rate": 0.4447
+    },
+    {
+      "ydstogo_bucket": 6,
+      "field_pos_bucket": 45,
+      "attempts": 14,
+      "raw_conversion_rate": 0.4286,
+      "smoothed_conversion_rate": 0.4163
+    },
+    {
+      "ydstogo_bucket": 6,
+      "field_pos_bucket": 50,
+      "attempts": 10,
+      "raw_conversion_rate": 0.4,
+      "smoothed_conversion_rate": 0.4067
+    },
+    {
+      "ydstogo_bucket": 6,
+      "field_pos_bucket": 55,
+      "attempts": 17,
+      "raw_conversion_rate": 0.3529,
+      "smoothed_conversion_rate": 0.3865
+    },
+    {
+      "ydstogo_bucket": 6,
+      "field_pos_bucket": 60,
+      "attempts": 3,
+      "raw_conversion_rate": 0.3333,
+      "smoothed_conversion_rate": 0.4012
+    },
+    {
+      "ydstogo_bucket": 6,
+      "field_pos_bucket": 65,
+      "attempts": 5,
+      "raw_conversion_rate": 0.6,
+      "smoothed_conversion_rate": 0.4411
+    },
+    {
+      "ydstogo_bucket": 6,
+      "field_pos_bucket": 70,
+      "attempts": 13,
+      "raw_conversion_rate": 0.6154,
+      "smoothed_conversion_rate": 0.4798
+    },
+    {
+      "ydstogo_bucket": 6,
+      "field_pos_bucket": 75,
+      "attempts": 5,
+      "raw_conversion_rate": 0,
+      "smoothed_conversion_rate": 0.3411
+    },
+    {
+      "ydstogo_bucket": 6,
+      "field_pos_bucket": 80,
+      "attempts": 2,
+      "raw_conversion_rate": 1,
+      "smoothed_conversion_rate": 0.4531
+    },
+    {
+      "ydstogo_bucket": 6,
+      "field_pos_bucket": 85,
+      "attempts": 1,
+      "raw_conversion_rate": 1,
+      "smoothed_conversion_rate": 0.4321
+    },
+    {
+      "ydstogo_bucket": 6,
+      "field_pos_bucket": 90,
+      "attempts": 1,
+      "raw_conversion_rate": 1,
+      "smoothed_conversion_rate": 0.4321
+    },
+    {
+      "ydstogo_bucket": 7,
+      "field_pos_bucket": 5,
+      "attempts": 11,
+      "raw_conversion_rate": 0.4545,
+      "smoothed_conversion_rate": 0.423
+    },
+    {
+      "ydstogo_bucket": 7,
+      "field_pos_bucket": 10,
+      "attempts": 9,
+      "raw_conversion_rate": 0.3333,
+      "smoothed_conversion_rate": 0.389
+    },
+    {
+      "ydstogo_bucket": 7,
+      "field_pos_bucket": 15,
+      "attempts": 5,
+      "raw_conversion_rate": 0,
+      "smoothed_conversion_rate": 0.3409
+    },
+    {
+      "ydstogo_bucket": 7,
+      "field_pos_bucket": 20,
+      "attempts": 5,
+      "raw_conversion_rate": 0.2,
+      "smoothed_conversion_rate": 0.3742
+    },
+    {
+      "ydstogo_bucket": 7,
+      "field_pos_bucket": 25,
+      "attempts": 10,
+      "raw_conversion_rate": 0.3,
+      "smoothed_conversion_rate": 0.3779
+    },
+    {
+      "ydstogo_bucket": 7,
+      "field_pos_bucket": 30,
+      "attempts": 10,
+      "raw_conversion_rate": 0.2,
+      "smoothed_conversion_rate": 0.3494
+    },
+    {
+      "ydstogo_bucket": 7,
+      "field_pos_bucket": 35,
+      "attempts": 15,
+      "raw_conversion_rate": 0.4,
+      "smoothed_conversion_rate": 0.4057
+    },
+    {
+      "ydstogo_bucket": 7,
+      "field_pos_bucket": 40,
+      "attempts": 12,
+      "raw_conversion_rate": 0.5833,
+      "smoothed_conversion_rate": 0.4656
+    },
+    {
+      "ydstogo_bucket": 7,
+      "field_pos_bucket": 45,
+      "attempts": 9,
+      "raw_conversion_rate": 0.3333,
+      "smoothed_conversion_rate": 0.389
+    },
+    {
+      "ydstogo_bucket": 7,
+      "field_pos_bucket": 50,
+      "attempts": 16,
+      "raw_conversion_rate": 0.75,
+      "smoothed_conversion_rate": 0.5421
+    },
+    {
+      "ydstogo_bucket": 7,
+      "field_pos_bucket": 55,
+      "attempts": 9,
+      "raw_conversion_rate": 0.4444,
+      "smoothed_conversion_rate": 0.4184
+    },
+    {
+      "ydstogo_bucket": 7,
+      "field_pos_bucket": 60,
+      "attempts": 3,
+      "raw_conversion_rate": 0.3333,
+      "smoothed_conversion_rate": 0.401
+    },
+    {
+      "ydstogo_bucket": 7,
+      "field_pos_bucket": 65,
+      "attempts": 7,
+      "raw_conversion_rate": 0.4286,
+      "smoothed_conversion_rate": 0.4134
+    },
+    {
+      "ydstogo_bucket": 7,
+      "field_pos_bucket": 70,
+      "attempts": 8,
+      "raw_conversion_rate": 0.25,
+      "smoothed_conversion_rate": 0.3705
+    },
+    {
+      "ydstogo_bucket": 7,
+      "field_pos_bucket": 75,
+      "attempts": 2,
+      "raw_conversion_rate": 1,
+      "smoothed_conversion_rate": 0.4529
+    },
+    {
+      "ydstogo_bucket": 7,
+      "field_pos_bucket": 85,
+      "attempts": 1,
+      "raw_conversion_rate": 0,
+      "smoothed_conversion_rate": 0.3934
+    },
+    {
+      "ydstogo_bucket": 8,
+      "field_pos_bucket": 5,
+      "attempts": 7,
+      "raw_conversion_rate": 0.4286,
+      "smoothed_conversion_rate": 0.3471
+    },
+    {
+      "ydstogo_bucket": 8,
+      "field_pos_bucket": 10,
+      "attempts": 5,
+      "raw_conversion_rate": 0,
+      "smoothed_conversion_rate": 0.2703
+    },
+    {
+      "ydstogo_bucket": 8,
+      "field_pos_bucket": 15,
+      "attempts": 1,
+      "raw_conversion_rate": 0,
+      "smoothed_conversion_rate": 0.3119
+    },
+    {
+      "ydstogo_bucket": 8,
+      "field_pos_bucket": 20,
+      "attempts": 9,
+      "raw_conversion_rate": 0.4444,
+      "smoothed_conversion_rate": 0.3561
+    },
+    {
+      "ydstogo_bucket": 8,
+      "field_pos_bucket": 25,
+      "attempts": 7,
+      "raw_conversion_rate": 0.1429,
+      "smoothed_conversion_rate": 0.2846
+    },
+    {
+      "ydstogo_bucket": 8,
+      "field_pos_bucket": 30,
+      "attempts": 9,
+      "raw_conversion_rate": 0.4444,
+      "smoothed_conversion_rate": 0.3561
+    },
+    {
+      "ydstogo_bucket": 8,
+      "field_pos_bucket": 35,
+      "attempts": 11,
+      "raw_conversion_rate": 0.1818,
+      "smoothed_conversion_rate": 0.2808
+    },
+    {
+      "ydstogo_bucket": 8,
+      "field_pos_bucket": 40,
+      "attempts": 14,
+      "raw_conversion_rate": 0.4286,
+      "smoothed_conversion_rate": 0.3617
+    },
+    {
+      "ydstogo_bucket": 8,
+      "field_pos_bucket": 45,
+      "attempts": 10,
+      "raw_conversion_rate": 0.4,
+      "smoothed_conversion_rate": 0.3459
+    },
+    {
+      "ydstogo_bucket": 8,
+      "field_pos_bucket": 50,
+      "attempts": 8,
+      "raw_conversion_rate": 0,
+      "smoothed_conversion_rate": 0.2457
+    },
+    {
+      "ydstogo_bucket": 8,
+      "field_pos_bucket": 55,
+      "attempts": 7,
+      "raw_conversion_rate": 0.2857,
+      "smoothed_conversion_rate": 0.3159
+    },
+    {
+      "ydstogo_bucket": 8,
+      "field_pos_bucket": 60,
+      "attempts": 4,
+      "raw_conversion_rate": 0,
+      "smoothed_conversion_rate": 0.2796
+    },
+    {
+      "ydstogo_bucket": 8,
+      "field_pos_bucket": 65,
+      "attempts": 9,
+      "raw_conversion_rate": 0.6667,
+      "smoothed_conversion_rate": 0.4149
+    },
+    {
+      "ydstogo_bucket": 8,
+      "field_pos_bucket": 70,
+      "attempts": 5,
+      "raw_conversion_rate": 0.4,
+      "smoothed_conversion_rate": 0.3369
+    },
+    {
+      "ydstogo_bucket": 8,
+      "field_pos_bucket": 75,
+      "attempts": 4,
+      "raw_conversion_rate": 0.5,
+      "smoothed_conversion_rate": 0.3486
+    },
+    {
+      "ydstogo_bucket": 8,
+      "field_pos_bucket": 80,
+      "attempts": 1,
+      "raw_conversion_rate": 0,
+      "smoothed_conversion_rate": 0.3119
+    },
+    {
+      "ydstogo_bucket": 9,
+      "field_pos_bucket": 5,
+      "attempts": 4,
+      "raw_conversion_rate": 0.75,
+      "smoothed_conversion_rate": 0.3422
+    },
+    {
+      "ydstogo_bucket": 9,
+      "field_pos_bucket": 10,
+      "attempts": 1,
+      "raw_conversion_rate": 0,
+      "smoothed_conversion_rate": 0.2663
+    },
+    {
+      "ydstogo_bucket": 9,
+      "field_pos_bucket": 15,
+      "attempts": 6,
+      "raw_conversion_rate": 0.6667,
+      "smoothed_conversion_rate": 0.3524
+    },
+    {
+      "ydstogo_bucket": 9,
+      "field_pos_bucket": 20,
+      "attempts": 4,
+      "raw_conversion_rate": 0.25,
+      "smoothed_conversion_rate": 0.2732
+    },
+    {
+      "ydstogo_bucket": 9,
+      "field_pos_bucket": 30,
+      "attempts": 6,
+      "raw_conversion_rate": 0.1667,
+      "smoothed_conversion_rate": 0.2556
+    },
+    {
+      "ydstogo_bucket": 9,
+      "field_pos_bucket": 35,
+      "attempts": 8,
+      "raw_conversion_rate": 0.125,
+      "smoothed_conversion_rate": 0.2401
+    },
+    {
+      "ydstogo_bucket": 9,
+      "field_pos_bucket": 40,
+      "attempts": 6,
+      "raw_conversion_rate": 0.1667,
+      "smoothed_conversion_rate": 0.2556
+    },
+    {
+      "ydstogo_bucket": 9,
+      "field_pos_bucket": 45,
+      "attempts": 6,
+      "raw_conversion_rate": 0.3333,
+      "smoothed_conversion_rate": 0.2878
+    },
+    {
+      "ydstogo_bucket": 9,
+      "field_pos_bucket": 50,
+      "attempts": 5,
+      "raw_conversion_rate": 0,
+      "smoothed_conversion_rate": 0.2308
+    },
+    {
+      "ydstogo_bucket": 9,
+      "field_pos_bucket": 55,
+      "attempts": 2,
+      "raw_conversion_rate": 0,
+      "smoothed_conversion_rate": 0.2564
+    },
+    {
+      "ydstogo_bucket": 9,
+      "field_pos_bucket": 60,
+      "attempts": 6,
+      "raw_conversion_rate": 0.5,
+      "smoothed_conversion_rate": 0.3201
+    },
+    {
+      "ydstogo_bucket": 9,
+      "field_pos_bucket": 65,
+      "attempts": 3,
+      "raw_conversion_rate": 0.3333,
+      "smoothed_conversion_rate": 0.283
+    },
+    {
+      "ydstogo_bucket": 9,
+      "field_pos_bucket": 70,
+      "attempts": 4,
+      "raw_conversion_rate": 0,
+      "smoothed_conversion_rate": 0.2387
+    },
+    {
+      "ydstogo_bucket": 9,
+      "field_pos_bucket": 75,
+      "attempts": 2,
+      "raw_conversion_rate": 0,
+      "smoothed_conversion_rate": 0.2564
+    },
+    {
+      "ydstogo_bucket": 9,
+      "field_pos_bucket": 85,
+      "attempts": 2,
+      "raw_conversion_rate": 0.5,
+      "smoothed_conversion_rate": 0.2934
+    },
+    {
+      "ydstogo_bucket": 10,
+      "field_pos_bucket": 10,
+      "attempts": 18,
+      "raw_conversion_rate": 0.2222,
+      "smoothed_conversion_rate": 0.2254
+    },
+    {
+      "ydstogo_bucket": 10,
+      "field_pos_bucket": 15,
+      "attempts": 29,
+      "raw_conversion_rate": 0.1379,
+      "smoothed_conversion_rate": 0.1794
+    },
+    {
+      "ydstogo_bucket": 10,
+      "field_pos_bucket": 20,
+      "attempts": 28,
+      "raw_conversion_rate": 0.3571,
+      "smoothed_conversion_rate": 0.296
+    },
+    {
+      "ydstogo_bucket": 10,
+      "field_pos_bucket": 25,
+      "attempts": 26,
+      "raw_conversion_rate": 0.1154,
+      "smoothed_conversion_rate": 0.1704
+    },
+    {
+      "ydstogo_bucket": 10,
+      "field_pos_bucket": 30,
+      "attempts": 30,
+      "raw_conversion_rate": 0.1333,
+      "smoothed_conversion_rate": 0.1762
+    },
+    {
+      "ydstogo_bucket": 10,
+      "field_pos_bucket": 35,
+      "attempts": 43,
+      "raw_conversion_rate": 0.2558,
+      "smoothed_conversion_rate": 0.2454
+    },
+    {
+      "ydstogo_bucket": 10,
+      "field_pos_bucket": 40,
+      "attempts": 37,
+      "raw_conversion_rate": 0.2432,
+      "smoothed_conversion_rate": 0.2369
+    },
+    {
+      "ydstogo_bucket": 10,
+      "field_pos_bucket": 45,
+      "attempts": 53,
+      "raw_conversion_rate": 0.1509,
+      "smoothed_conversion_rate": 0.1755
+    },
+    {
+      "ydstogo_bucket": 10,
+      "field_pos_bucket": 50,
+      "attempts": 43,
+      "raw_conversion_rate": 0.2791,
+      "smoothed_conversion_rate": 0.2602
+    },
+    {
+      "ydstogo_bucket": 10,
+      "field_pos_bucket": 55,
+      "attempts": 38,
+      "raw_conversion_rate": 0.2105,
+      "smoothed_conversion_rate": 0.2173
+    },
+    {
+      "ydstogo_bucket": 10,
+      "field_pos_bucket": 60,
+      "attempts": 40,
+      "raw_conversion_rate": 0.275,
+      "smoothed_conversion_rate": 0.2568
+    },
+    {
+      "ydstogo_bucket": 10,
+      "field_pos_bucket": 65,
+      "attempts": 39,
+      "raw_conversion_rate": 0.2051,
+      "smoothed_conversion_rate": 0.2139
+    },
+    {
+      "ydstogo_bucket": 10,
+      "field_pos_bucket": 70,
+      "attempts": 28,
+      "raw_conversion_rate": 0.3571,
+      "smoothed_conversion_rate": 0.296
+    },
+    {
+      "ydstogo_bucket": 10,
+      "field_pos_bucket": 75,
+      "attempts": 35,
+      "raw_conversion_rate": 0.2571,
+      "smoothed_conversion_rate": 0.2448
+    },
+    {
+      "ydstogo_bucket": 10,
+      "field_pos_bucket": 80,
+      "attempts": 27,
+      "raw_conversion_rate": 0.2593,
+      "smoothed_conversion_rate": 0.244
+    },
+    {
+      "ydstogo_bucket": 10,
+      "field_pos_bucket": 85,
+      "attempts": 10,
+      "raw_conversion_rate": 0,
+      "smoothed_conversion_rate": 0.1626
+    },
+    {
+      "ydstogo_bucket": 10,
+      "field_pos_bucket": 90,
+      "attempts": 7,
+      "raw_conversion_rate": 0.2857,
+      "smoothed_conversion_rate": 0.2403
+    },
+    {
+      "ydstogo_bucket": 10,
+      "field_pos_bucket": 95,
+      "attempts": 5,
+      "raw_conversion_rate": 0.4,
+      "smoothed_conversion_rate": 0.2563
+    }
+  ],
+  "short_go": [
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 0,
+      "attempts": 264,
+      "raw_conversion_rate": 0.5985,
+      "raw_touchdown_rate": 0.5114,
+      "raw_success_non_td_rate": 0.0871,
+      "raw_success_new_yardline100": 1.5217,
+      "raw_failure_new_yardline100": 2.4717,
+      "smoothed_conversion_rate": 0.6079,
+      "smoothed_touchdown_rate": 0.463,
+      "smoothed_success_non_td_rate": 0.1449,
+      "smoothed_success_new_yardline100": 21.976,
+      "smoothed_failure_new_yardline100": 10.1683
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 5,
+      "attempts": 100,
+      "raw_conversion_rate": 0.65,
+      "raw_touchdown_rate": 0.17,
+      "raw_success_non_td_rate": 0.48,
+      "raw_success_new_yardline100": 5.0625,
+      "raw_failure_new_yardline100": 7.4286,
+      "smoothed_conversion_rate": 0.6575,
+      "smoothed_touchdown_rate": 0.1515,
+      "smoothed_success_non_td_rate": 0.5061,
+      "smoothed_success_new_yardline100": 17.8628,
+      "smoothed_failure_new_yardline100": 20.4534
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 10,
+      "attempts": 88,
+      "raw_conversion_rate": 0.7159,
+      "raw_touchdown_rate": 0.0455,
+      "raw_success_non_td_rate": 0.6705,
+      "raw_success_new_yardline100": 8.3051,
+      "raw_failure_new_yardline100": 13.4,
+      "smoothed_conversion_rate": 0.7054,
+      "smoothed_touchdown_rate": 0.0606,
+      "smoothed_success_non_td_rate": 0.6449,
+      "smoothed_success_new_yardline100": 18.4001,
+      "smoothed_failure_new_yardline100": 25.1123
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 15,
+      "attempts": 104,
+      "raw_conversion_rate": 0.6827,
+      "raw_touchdown_rate": 0.0481,
+      "raw_success_non_td_rate": 0.6346,
+      "raw_success_new_yardline100": 13.197,
+      "raw_failure_new_yardline100": 17.1212,
+      "smoothed_conversion_rate": 0.6818,
+      "smoothed_touchdown_rate": 0.0608,
+      "smoothed_success_non_td_rate": 0.621,
+      "smoothed_success_new_yardline100": 20.8971,
+      "smoothed_failure_new_yardline100": 25.5402
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 20,
+      "attempts": 83,
+      "raw_conversion_rate": 0.6145,
+      "raw_touchdown_rate": 0.0241,
+      "raw_success_non_td_rate": 0.5904,
+      "raw_success_new_yardline100": 17.5918,
+      "raw_failure_new_yardline100": 23.1562,
+      "smoothed_conversion_rate": 0.6336,
+      "smoothed_touchdown_rate": 0.0462,
+      "smoothed_success_non_td_rate": 0.5874,
+      "smoothed_success_new_yardline100": 25.0192,
+      "smoothed_failure_new_yardline100": 28.5483
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 25,
+      "attempts": 117,
+      "raw_conversion_rate": 0.6838,
+      "raw_touchdown_rate": 0.0171,
+      "raw_success_non_td_rate": 0.6667,
+      "raw_success_new_yardline100": 22.5641,
+      "raw_failure_new_yardline100": 27.1892,
+      "smoothed_conversion_rate": 0.6827,
+      "smoothed_touchdown_rate": 0.0358,
+      "smoothed_success_non_td_rate": 0.6468,
+      "smoothed_success_new_yardline100": 26.5452,
+      "smoothed_failure_new_yardline100": 30.2463
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 30,
+      "attempts": 111,
+      "raw_conversion_rate": 0.6757,
+      "raw_touchdown_rate": 0.045,
+      "raw_success_non_td_rate": 0.6306,
+      "raw_success_new_yardline100": 26.6286,
+      "raw_failure_new_yardline100": 32.8056,
+      "smoothed_conversion_rate": 0.6765,
+      "smoothed_touchdown_rate": 0.0579,
+      "smoothed_success_non_td_rate": 0.6186,
+      "smoothed_success_new_yardline100": 29.5582,
+      "smoothed_failure_new_yardline100": 33.1371
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 35,
+      "attempts": 170,
+      "raw_conversion_rate": 0.7118,
+      "raw_touchdown_rate": 0.0294,
+      "raw_success_non_td_rate": 0.6824,
+      "raw_success_new_yardline100": 32.0345,
+      "raw_failure_new_yardline100": 37.551,
+      "smoothed_conversion_rate": 0.7062,
+      "smoothed_touchdown_rate": 0.0412,
+      "smoothed_success_non_td_rate": 0.665,
+      "smoothed_success_new_yardline100": 32.8186,
+      "smoothed_failure_new_yardline100": 35.854
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 40,
+      "attempts": 139,
+      "raw_conversion_rate": 0.7266,
+      "raw_touchdown_rate": 0.0216,
+      "raw_success_non_td_rate": 0.705,
+      "raw_success_new_yardline100": 36.4184,
+      "raw_failure_new_yardline100": 42.7105,
+      "smoothed_conversion_rate": 0.7171,
+      "smoothed_touchdown_rate": 0.0371,
+      "smoothed_success_non_td_rate": 0.68,
+      "smoothed_success_new_yardline100": 36.155,
+      "smoothed_failure_new_yardline100": 38.2841
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 45,
+      "attempts": 133,
+      "raw_conversion_rate": 0.7218,
+      "raw_touchdown_rate": 0.0075,
+      "raw_success_non_td_rate": 0.7143,
+      "raw_success_new_yardline100": 40.9895,
+      "raw_failure_new_yardline100": 48.2973,
+      "smoothed_conversion_rate": 0.7129,
+      "smoothed_touchdown_rate": 0.0265,
+      "smoothed_success_non_td_rate": 0.6864,
+      "smoothed_success_new_yardline100": 39.4893,
+      "smoothed_failure_new_yardline100": 41.0936
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 50,
+      "attempts": 151,
+      "raw_conversion_rate": 0.7219,
+      "raw_touchdown_rate": 0.0199,
+      "raw_success_non_td_rate": 0.702,
+      "raw_success_new_yardline100": 45.5849,
+      "raw_failure_new_yardline100": 52.3095,
+      "smoothed_conversion_rate": 0.7138,
+      "smoothed_touchdown_rate": 0.0347,
+      "smoothed_success_non_td_rate": 0.6791,
+      "smoothed_success_new_yardline100": 43.0611,
+      "smoothed_failure_new_yardline100": 43.7498
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 55,
+      "attempts": 107,
+      "raw_conversion_rate": 0.6542,
+      "raw_touchdown_rate": 0.0093,
+      "raw_success_non_td_rate": 0.6449,
+      "raw_success_new_yardline100": 50.4058,
+      "raw_failure_new_yardline100": 57.5946,
+      "smoothed_conversion_rate": 0.6603,
+      "smoothed_touchdown_rate": 0.0313,
+      "smoothed_success_non_td_rate": 0.629,
+      "smoothed_success_new_yardline100": 45.3616,
+      "smoothed_failure_new_yardline100": 45.8713
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 60,
+      "attempts": 93,
+      "raw_conversion_rate": 0.6774,
+      "raw_touchdown_rate": 0,
+      "raw_success_non_td_rate": 0.6774,
+      "raw_success_new_yardline100": 56.0952,
+      "raw_failure_new_yardline100": 61.9,
+      "smoothed_conversion_rate": 0.6779,
+      "smoothed_touchdown_rate": 0.0269,
+      "smoothed_success_non_td_rate": 0.6509,
+      "smoothed_success_new_yardline100": 48.7103,
+      "smoothed_failure_new_yardline100": 46.5959
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 65,
+      "attempts": 123,
+      "raw_conversion_rate": 0.6829,
+      "raw_touchdown_rate": 0,
+      "raw_success_non_td_rate": 0.6829,
+      "raw_success_new_yardline100": 62.1786,
+      "raw_failure_new_yardline100": 67.9744,
+      "smoothed_conversion_rate": 0.6821,
+      "smoothed_touchdown_rate": 0.0218,
+      "smoothed_success_non_td_rate": 0.6602,
+      "smoothed_success_new_yardline100": 54.3077,
+      "smoothed_failure_new_yardline100": 51.6586
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 70,
+      "attempts": 47,
+      "raw_conversion_rate": 0.7447,
+      "raw_touchdown_rate": 0,
+      "raw_success_non_td_rate": 0.7447,
+      "raw_success_new_yardline100": 67.2,
+      "raw_failure_new_yardline100": 72.0833,
+      "smoothed_conversion_rate": 0.7167,
+      "smoothed_touchdown_rate": 0.0421,
+      "smoothed_success_non_td_rate": 0.6746,
+      "smoothed_success_new_yardline100": 51.3087,
+      "smoothed_failure_new_yardline100": 43.3348
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 75,
+      "attempts": 9,
+      "raw_conversion_rate": 0.5556,
+      "raw_touchdown_rate": 0,
+      "raw_success_non_td_rate": 0.5556,
+      "raw_success_new_yardline100": 74.4,
+      "raw_failure_new_yardline100": 77.5,
+      "smoothed_conversion_rate": 0.6538,
+      "smoothed_touchdown_rate": 0.0784,
+      "smoothed_success_non_td_rate": 0.5754,
+      "smoothed_success_new_yardline100": 40.2903,
+      "smoothed_failure_new_yardline100": 37.9932
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 80,
+      "attempts": 16,
+      "raw_conversion_rate": 0.8125,
+      "raw_touchdown_rate": 0,
+      "raw_success_non_td_rate": 0.8125,
+      "raw_success_new_yardline100": 77.6923,
+      "raw_failure_new_yardline100": 82.6667,
+      "smoothed_conversion_rate": 0.7209,
+      "smoothed_touchdown_rate": 0.0676,
+      "smoothed_success_non_td_rate": 0.6533,
+      "smoothed_success_new_yardline100": 46.8669,
+      "smoothed_failure_new_yardline100": 37.3615
+    },
+    {
+      "ydstogo_bucket": 1,
+      "field_pos_bucket": 85,
+      "attempts": 2,
+      "raw_conversion_rate": 0.5,
+      "raw_touchdown_rate": 0,
+      "raw_success_non_td_rate": 0.5,
+      "raw_success_new_yardline100": 75,
+      "raw_failure_new_yardline100": 94,
+      "smoothed_conversion_rate": 0.6694,
+      "smoothed_touchdown_rate": 0.0932,
+      "smoothed_success_non_td_rate": 0.5762,
+      "smoothed_success_new_yardline100": 36.517,
+      "smoothed_failure_new_yardline100": 35.1593
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 0,
+      "attempts": 109,
+      "raw_conversion_rate": 0.5413,
+      "raw_touchdown_rate": 0.5229,
+      "raw_success_non_td_rate": 0.0183,
+      "raw_success_new_yardline100": 1,
+      "raw_failure_new_yardline100": 2.66,
+      "smoothed_conversion_rate": 0.5539,
+      "smoothed_touchdown_rate": 0.4307,
+      "smoothed_success_non_td_rate": 0.1233,
+      "smoothed_success_new_yardline100": 27.7602,
+      "smoothed_failure_new_yardline100": 15.2951
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 5,
+      "attempts": 39,
+      "raw_conversion_rate": 0.5385,
+      "raw_touchdown_rate": 0.3077,
+      "raw_success_non_td_rate": 0.2308,
+      "raw_success_new_yardline100": 3.2222,
+      "raw_failure_new_yardline100": 7.7778,
+      "smoothed_conversion_rate": 0.5644,
+      "smoothed_touchdown_rate": 0.2299,
+      "smoothed_success_non_td_rate": 0.3345,
+      "smoothed_success_new_yardline100": 23.9575,
+      "smoothed_failure_new_yardline100": 24.6619
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 10,
+      "attempts": 27,
+      "raw_conversion_rate": 0.7778,
+      "raw_touchdown_rate": 0.2593,
+      "raw_success_non_td_rate": 0.5185,
+      "raw_success_new_yardline100": 7.0714,
+      "raw_failure_new_yardline100": 14,
+      "smoothed_conversion_rate": 0.6737,
+      "smoothed_touchdown_rate": 0.1938,
+      "smoothed_success_non_td_rate": 0.4799,
+      "smoothed_success_new_yardline100": 22.9414,
+      "smoothed_failure_new_yardline100": 30.5142
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 15,
+      "attempts": 32,
+      "raw_conversion_rate": 0.7188,
+      "raw_touchdown_rate": 0.125,
+      "raw_success_non_td_rate": 0.5938,
+      "raw_success_new_yardline100": 11.1053,
+      "raw_failure_new_yardline100": 18.6667,
+      "smoothed_conversion_rate": 0.6532,
+      "smoothed_touchdown_rate": 0.1345,
+      "smoothed_success_non_td_rate": 0.5187,
+      "smoothed_success_new_yardline100": 22.8913,
+      "smoothed_failure_new_yardline100": 30.3428
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 20,
+      "attempts": 28,
+      "raw_conversion_rate": 0.6786,
+      "raw_touchdown_rate": 0.1429,
+      "raw_success_non_td_rate": 0.5357,
+      "raw_success_new_yardline100": 13.4667,
+      "raw_failure_new_yardline100": 24.2222,
+      "smoothed_conversion_rate": 0.6312,
+      "smoothed_touchdown_rate": 0.1431,
+      "smoothed_success_non_td_rate": 0.4881,
+      "smoothed_success_new_yardline100": 24.5426,
+      "smoothed_failure_new_yardline100": 31.4791
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 25,
+      "attempts": 57,
+      "raw_conversion_rate": 0.5965,
+      "raw_touchdown_rate": 0.0877,
+      "raw_success_non_td_rate": 0.5088,
+      "raw_success_new_yardline100": 18.3448,
+      "raw_failure_new_yardline100": 27.2609,
+      "smoothed_conversion_rate": 0.5953,
+      "smoothed_touchdown_rate": 0.1089,
+      "smoothed_success_non_td_rate": 0.4864,
+      "smoothed_success_new_yardline100": 24.3301,
+      "smoothed_failure_new_yardline100": 30.9324
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 30,
+      "attempts": 51,
+      "raw_conversion_rate": 0.549,
+      "raw_touchdown_rate": 0,
+      "raw_success_non_td_rate": 0.549,
+      "raw_success_new_yardline100": 20.2143,
+      "raw_failure_new_yardline100": 32.913,
+      "smoothed_conversion_rate": 0.5671,
+      "smoothed_touchdown_rate": 0.0583,
+      "smoothed_success_non_td_rate": 0.5088,
+      "smoothed_success_new_yardline100": 25.256,
+      "smoothed_failure_new_yardline100": 33.1738
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 35,
+      "attempts": 67,
+      "raw_conversion_rate": 0.597,
+      "raw_touchdown_rate": 0.0299,
+      "raw_success_non_td_rate": 0.5672,
+      "raw_success_new_yardline100": 28.7105,
+      "raw_failure_new_yardline100": 37.2963,
+      "smoothed_conversion_rate": 0.5958,
+      "smoothed_touchdown_rate": 0.0688,
+      "smoothed_success_non_td_rate": 0.527,
+      "smoothed_success_new_yardline100": 28.9881,
+      "smoothed_failure_new_yardline100": 35.0658
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 40,
+      "attempts": 87,
+      "raw_conversion_rate": 0.6552,
+      "raw_touchdown_rate": 0.046,
+      "raw_success_non_td_rate": 0.6092,
+      "raw_success_new_yardline100": 28.6792,
+      "raw_failure_new_yardline100": 42.6,
+      "smoothed_conversion_rate": 0.6374,
+      "smoothed_touchdown_rate": 0.0739,
+      "smoothed_success_non_td_rate": 0.5635,
+      "smoothed_success_new_yardline100": 28.9219,
+      "smoothed_failure_new_yardline100": 37.6166
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 45,
+      "attempts": 53,
+      "raw_conversion_rate": 0.566,
+      "raw_touchdown_rate": 0.0377,
+      "raw_success_non_td_rate": 0.5283,
+      "raw_success_new_yardline100": 34.3214,
+      "raw_failure_new_yardline100": 46.2609,
+      "smoothed_conversion_rate": 0.5769,
+      "smoothed_touchdown_rate": 0.0797,
+      "smoothed_success_non_td_rate": 0.4972,
+      "smoothed_success_new_yardline100": 31.5259,
+      "smoothed_failure_new_yardline100": 38.4669
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 50,
+      "attempts": 33,
+      "raw_conversion_rate": 0.5758,
+      "raw_touchdown_rate": 0.0303,
+      "raw_success_non_td_rate": 0.5455,
+      "raw_success_new_yardline100": 39.8889,
+      "raw_failure_new_yardline100": 51.2857,
+      "smoothed_conversion_rate": 0.5848,
+      "smoothed_touchdown_rate": 0.0884,
+      "smoothed_success_non_td_rate": 0.4964,
+      "smoothed_success_new_yardline100": 32.8892,
+      "smoothed_failure_new_yardline100": 38.4711
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 55,
+      "attempts": 37,
+      "raw_conversion_rate": 0.5676,
+      "raw_touchdown_rate": 0,
+      "raw_success_non_td_rate": 0.5676,
+      "raw_success_new_yardline100": 46.1905,
+      "raw_failure_new_yardline100": 58.25,
+      "smoothed_conversion_rate": 0.5801,
+      "smoothed_touchdown_rate": 0.0696,
+      "smoothed_success_non_td_rate": 0.5105,
+      "smoothed_success_new_yardline100": 35.6273,
+      "smoothed_failure_new_yardline100": 41.1585
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 60,
+      "attempts": 18,
+      "raw_conversion_rate": 0.3333,
+      "raw_touchdown_rate": 0,
+      "raw_success_non_td_rate": 0.3333,
+      "raw_success_new_yardline100": 51.3333,
+      "raw_failure_new_yardline100": 62.75,
+      "smoothed_conversion_rate": 0.505,
+      "smoothed_touchdown_rate": 0.0946,
+      "smoothed_success_non_td_rate": 0.4104,
+      "smoothed_success_new_yardline100": 32.5153,
+      "smoothed_failure_new_yardline100": 40.8528
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 65,
+      "attempts": 30,
+      "raw_conversion_rate": 0.5667,
+      "raw_touchdown_rate": 0,
+      "raw_success_non_td_rate": 0.5667,
+      "raw_success_new_yardline100": 55.5294,
+      "raw_failure_new_yardline100": 67,
+      "smoothed_conversion_rate": 0.581,
+      "smoothed_touchdown_rate": 0.0771,
+      "smoothed_success_non_td_rate": 0.5039,
+      "smoothed_success_new_yardline100": 37.8679,
+      "smoothed_failure_new_yardline100": 42.46
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 70,
+      "attempts": 8,
+      "raw_conversion_rate": 0.5,
+      "raw_touchdown_rate": 0.125,
+      "raw_success_non_td_rate": 0.375,
+      "raw_success_new_yardline100": 58.3333,
+      "raw_failure_new_yardline100": 70.5,
+      "smoothed_conversion_rate": 0.576,
+      "smoothed_touchdown_rate": 0.1399,
+      "smoothed_success_non_td_rate": 0.4361,
+      "smoothed_success_new_yardline100": 31.5823,
+      "smoothed_failure_new_yardline100": 37.1559
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 75,
+      "attempts": 8,
+      "raw_conversion_rate": 0.75,
+      "raw_touchdown_rate": 0,
+      "raw_success_non_td_rate": 0.75,
+      "raw_success_new_yardline100": 65.3333,
+      "raw_failure_new_yardline100": 87.5,
+      "smoothed_conversion_rate": 0.6225,
+      "smoothed_touchdown_rate": 0.1166,
+      "smoothed_success_non_td_rate": 0.5059,
+      "smoothed_success_new_yardline100": 34.5641,
+      "smoothed_failure_new_yardline100": 36.2725
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 80,
+      "attempts": 6,
+      "raw_conversion_rate": 0.6667,
+      "raw_touchdown_rate": 0,
+      "raw_success_non_td_rate": 0.6667,
+      "raw_success_new_yardline100": 76.5,
+      "raw_failure_new_yardline100": 81.5,
+      "smoothed_conversion_rate": 0.6041,
+      "smoothed_touchdown_rate": 0.1223,
+      "smoothed_success_non_td_rate": 0.4818,
+      "smoothed_success_new_yardline100": 34.1315,
+      "smoothed_failure_new_yardline100": 35.9482
+    },
+    {
+      "ydstogo_bucket": 2,
+      "field_pos_bucket": 85,
+      "attempts": 1,
+      "raw_conversion_rate": 1,
+      "raw_touchdown_rate": 0,
+      "raw_success_non_td_rate": 1,
+      "raw_success_new_yardline100": 83,
+      "smoothed_conversion_rate": 0.6046,
+      "smoothed_touchdown_rate": 0.1393,
+      "smoothed_success_non_td_rate": 0.4653,
+      "smoothed_success_new_yardline100": 30.7814,
+      "smoothed_failure_new_yardline100": 33.3452
+    }
+  ],
+  "field_goal": [
+    {
+      "distance_bucket": 19,
+      "attempts": 19,
+      "raw_make_rate": 1,
+      "smoothed_make_rate": 0.9852
+    },
+    {
+      "distance_bucket": 20,
+      "attempts": 66,
+      "raw_make_rate": 0.9848,
+      "smoothed_make_rate": 0.9836
+    },
+    {
+      "distance_bucket": 21,
+      "attempts": 92,
+      "raw_make_rate": 1,
+      "smoothed_make_rate": 0.9819
+    },
+    {
+      "distance_bucket": 22,
+      "attempts": 127,
+      "raw_make_rate": 0.9843,
+      "smoothed_make_rate": 0.98
+    },
+    {
+      "distance_bucket": 23,
+      "attempts": 156,
+      "raw_make_rate": 1,
+      "smoothed_make_rate": 0.9779
+    },
+    {
+      "distance_bucket": 24,
+      "attempts": 139,
+      "raw_make_rate": 0.9784,
+      "smoothed_make_rate": 0.9756
+    },
+    {
+      "distance_bucket": 25,
+      "attempts": 144,
+      "raw_make_rate": 0.9792,
+      "smoothed_make_rate": 0.973
+    },
+    {
+      "distance_bucket": 26,
+      "attempts": 141,
+      "raw_make_rate": 0.9645,
+      "smoothed_make_rate": 0.9702
+    },
+    {
+      "distance_bucket": 27,
+      "attempts": 163,
+      "raw_make_rate": 0.9632,
+      "smoothed_make_rate": 0.9672
+    },
+    {
+      "distance_bucket": 28,
+      "attempts": 157,
+      "raw_make_rate": 0.9873,
+      "smoothed_make_rate": 0.9638
+    },
+    {
+      "distance_bucket": 29,
+      "attempts": 169,
+      "raw_make_rate": 0.9527,
+      "smoothed_make_rate": 0.96
+    },
+    {
+      "distance_bucket": 30,
+      "attempts": 160,
+      "raw_make_rate": 0.975,
+      "smoothed_make_rate": 0.956
+    },
+    {
+      "distance_bucket": 31,
+      "attempts": 164,
+      "raw_make_rate": 0.9695,
+      "smoothed_make_rate": 0.9515
+    },
+    {
+      "distance_bucket": 32,
+      "attempts": 147,
+      "raw_make_rate": 0.9524,
+      "smoothed_make_rate": 0.9465
+    },
+    {
+      "distance_bucket": 33,
+      "attempts": 197,
+      "raw_make_rate": 0.9797,
+      "smoothed_make_rate": 0.9412
+    },
+    {
+      "distance_bucket": 34,
+      "attempts": 163,
+      "raw_make_rate": 0.9448,
+      "smoothed_make_rate": 0.9353
+    },
+    {
+      "distance_bucket": 35,
+      "attempts": 191,
+      "raw_make_rate": 0.9162,
+      "smoothed_make_rate": 0.9288
+    },
+    {
+      "distance_bucket": 36,
+      "attempts": 170,
+      "raw_make_rate": 0.9,
+      "smoothed_make_rate": 0.9218
+    },
+    {
+      "distance_bucket": 37,
+      "attempts": 188,
+      "raw_make_rate": 0.8936,
+      "smoothed_make_rate": 0.9141
+    },
+    {
+      "distance_bucket": 38,
+      "attempts": 206,
+      "raw_make_rate": 0.9126,
+      "smoothed_make_rate": 0.9058
+    },
+    {
+      "distance_bucket": 39,
+      "attempts": 161,
+      "raw_make_rate": 0.9006,
+      "smoothed_make_rate": 0.8968
+    },
+    {
+      "distance_bucket": 40,
+      "attempts": 158,
+      "raw_make_rate": 0.8987,
+      "smoothed_make_rate": 0.887
+    },
+    {
+      "distance_bucket": 41,
+      "attempts": 181,
+      "raw_make_rate": 0.8287,
+      "smoothed_make_rate": 0.8764
+    },
+    {
+      "distance_bucket": 42,
+      "attempts": 167,
+      "raw_make_rate": 0.8503,
+      "smoothed_make_rate": 0.8649
+    },
+    {
+      "distance_bucket": 43,
+      "attempts": 222,
+      "raw_make_rate": 0.8153,
+      "smoothed_make_rate": 0.8526
+    },
+    {
+      "distance_bucket": 44,
+      "attempts": 166,
+      "raw_make_rate": 0.8072,
+      "smoothed_make_rate": 0.8393
+    },
+    {
+      "distance_bucket": 45,
+      "attempts": 185,
+      "raw_make_rate": 0.7838,
+      "smoothed_make_rate": 0.8251
+    },
+    {
+      "distance_bucket": 46,
+      "attempts": 167,
+      "raw_make_rate": 0.7964,
+      "smoothed_make_rate": 0.81
+    },
+    {
+      "distance_bucket": 47,
+      "attempts": 164,
+      "raw_make_rate": 0.7012,
+      "smoothed_make_rate": 0.7938
+    },
+    {
+      "distance_bucket": 48,
+      "attempts": 223,
+      "raw_make_rate": 0.7489,
+      "smoothed_make_rate": 0.7766
+    },
+    {
+      "distance_bucket": 49,
+      "attempts": 148,
+      "raw_make_rate": 0.7838,
+      "smoothed_make_rate": 0.7585
+    },
+    {
+      "distance_bucket": 50,
+      "attempts": 165,
+      "raw_make_rate": 0.7515,
+      "smoothed_make_rate": 0.7394
+    },
+    {
+      "distance_bucket": 51,
+      "attempts": 193,
+      "raw_make_rate": 0.7098,
+      "smoothed_make_rate": 0.7193
+    },
+    {
+      "distance_bucket": 52,
+      "attempts": 192,
+      "raw_make_rate": 0.7344,
+      "smoothed_make_rate": 0.6983
+    },
+    {
+      "distance_bucket": 53,
+      "attempts": 177,
+      "raw_make_rate": 0.6893,
+      "smoothed_make_rate": 0.6765
+    },
+    {
+      "distance_bucket": 54,
+      "attempts": 147,
+      "raw_make_rate": 0.7619,
+      "smoothed_make_rate": 0.6538
+    },
+    {
+      "distance_bucket": 55,
+      "attempts": 122,
+      "raw_make_rate": 0.6475,
+      "smoothed_make_rate": 0.6304
+    },
+    {
+      "distance_bucket": 56,
+      "attempts": 100,
+      "raw_make_rate": 0.63,
+      "smoothed_make_rate": 0.6064
+    },
+    {
+      "distance_bucket": 57,
+      "attempts": 77,
+      "raw_make_rate": 0.6104,
+      "smoothed_make_rate": 0.5819
+    },
+    {
+      "distance_bucket": 58,
+      "attempts": 49,
+      "raw_make_rate": 0.551,
+      "smoothed_make_rate": 0.557
+    },
+    {
+      "distance_bucket": 59,
+      "attempts": 36,
+      "raw_make_rate": 0.6944,
+      "smoothed_make_rate": 0.5317
+    },
+    {
+      "distance_bucket": 60,
+      "attempts": 18,
+      "raw_make_rate": 0.5,
+      "smoothed_make_rate": 0.5063
+    },
+    {
+      "distance_bucket": 61,
+      "attempts": 21,
+      "raw_make_rate": 0.4286,
+      "smoothed_make_rate": 0.4809
+    },
+    {
+      "distance_bucket": 62,
+      "attempts": 8,
+      "raw_make_rate": 0.5,
+      "smoothed_make_rate": 0.4556
+    },
+    {
+      "distance_bucket": 63,
+      "attempts": 8,
+      "raw_make_rate": 0.375,
+      "smoothed_make_rate": 0.4305
+    },
+    {
+      "distance_bucket": 64,
+      "attempts": 5,
+      "raw_make_rate": 0.2,
+      "smoothed_make_rate": 0.4057
+    },
+    {
+      "distance_bucket": 65,
+      "attempts": 6,
+      "raw_make_rate": 0.3333,
+      "smoothed_make_rate": 0.3815
+    },
+    {
+      "distance_bucket": 66,
+      "attempts": 1,
+      "raw_make_rate": 1,
+      "smoothed_make_rate": 0.3578
+    },
+    {
+      "distance_bucket": 67,
+      "attempts": 5,
+      "raw_make_rate": 0.2,
+      "smoothed_make_rate": 0.3347
+    },
+    {
+      "distance_bucket": 68,
+      "attempts": 4,
+      "raw_make_rate": 0.25,
+      "smoothed_make_rate": 0.3125
+    },
+    {
+      "distance_bucket": 70,
+      "attempts": 2,
+      "raw_make_rate": 0,
+      "smoothed_make_rate": 0.2705
+    }
+  ],
+  "punt": [
+    {
+      "field_pos_bucket": 25,
+      "punts": 2,
+      "raw_est_start_yardline100": 79.5,
+      "raw_est_net_yards": 8,
+      "smoothed_est_start_yardline100": 75.7316,
+      "smoothed_est_net_yards": 40.1317
+    },
+    {
+      "field_pos_bucket": 30,
+      "punts": 8,
+      "raw_est_start_yardline100": 85.625,
+      "raw_est_net_yards": 18.125,
+      "smoothed_est_start_yardline100": 76.9663,
+      "smoothed_est_net_yards": 38.2042
+    },
+    {
+      "field_pos_bucket": 35,
+      "punts": 143,
+      "raw_est_start_yardline100": 88.5524,
+      "raw_est_net_yards": 26.6783,
+      "smoothed_est_start_yardline100": 85.1919,
+      "smoothed_est_net_yards": 30.4966
+    },
+    {
+      "field_pos_bucket": 40,
+      "punts": 688,
+      "raw_est_start_yardline100": 88.3081,
+      "raw_est_net_yards": 30.5116,
+      "smoothed_est_start_yardline100": 87.4459,
+      "smoothed_est_net_yards": 31.2505
+    },
+    {
+      "field_pos_bucket": 45,
+      "punts": 860,
+      "raw_est_start_yardline100": 87.9163,
+      "raw_est_net_yards": 34.9988,
+      "smoothed_est_start_yardline100": 87.2385,
+      "smoothed_est_net_yards": 35.3515
+    },
+    {
+      "field_pos_bucket": 50,
+      "punts": 1049,
+      "raw_est_start_yardline100": 86.1459,
+      "raw_est_net_yards": 38.1783,
+      "smoothed_est_start_yardline100": 85.6652,
+      "smoothed_est_net_yards": 38.3256
+    },
+    {
+      "field_pos_bucket": 55,
+      "punts": 1306,
+      "raw_est_start_yardline100": 84.0796,
+      "raw_est_net_yards": 41.1118,
+      "smoothed_est_start_yardline100": 83.7663,
+      "smoothed_est_net_yards": 41.123
+    },
+    {
+      "field_pos_bucket": 60,
+      "punts": 1416,
+      "raw_est_start_yardline100": 80.7797,
+      "raw_est_net_yards": 42.8136,
+      "smoothed_est_start_yardline100": 80.6023,
+      "smoothed_est_net_yards": 42.7659
+    },
+    {
+      "field_pos_bucket": 65,
+      "punts": 1741,
+      "raw_est_start_yardline100": 77.5135,
+      "raw_est_net_yards": 44.5101,
+      "smoothed_est_start_yardline100": 77.4595,
+      "smoothed_est_net_yards": 44.4237
+    },
+    {
+      "field_pos_bucket": 70,
+      "punts": 1733,
+      "raw_est_start_yardline100": 71.8465,
+      "raw_est_net_yards": 43.7259,
+      "smoothed_est_start_yardline100": 71.9512,
+      "smoothed_est_net_yards": 43.6612
+    },
+    {
+      "field_pos_bucket": 75,
+      "punts": 1294,
+      "raw_est_start_yardline100": 67.2411,
+      "raw_est_net_yards": 44.0386,
+      "smoothed_est_start_yardline100": 67.5514,
+      "smoothed_est_net_yards": 43.9411
+    },
+    {
+      "field_pos_bucket": 80,
+      "punts": 911,
+      "raw_est_start_yardline100": 62.1493,
+      "raw_est_net_yards": 43.9045,
+      "smoothed_est_start_yardline100": 62.8481,
+      "smoothed_est_net_yards": 43.7751
+    },
+    {
+      "field_pos_bucket": 85,
+      "punts": 625,
+      "raw_est_start_yardline100": 56.9552,
+      "raw_est_net_yards": 43.6976,
+      "smoothed_est_start_yardline100": 58.3349,
+      "smoothed_est_net_yards": 43.5287
+    },
+    {
+      "field_pos_bucket": 90,
+      "punts": 338,
+      "raw_est_start_yardline100": 51.5148,
+      "raw_est_net_yards": 43.2337,
+      "smoothed_est_start_yardline100": 54.6161,
+      "smoothed_est_net_yards": 42.9996
+    },
+    {
+      "field_pos_bucket": 95,
+      "punts": 164,
+      "raw_est_start_yardline100": 45.4512,
+      "raw_est_net_yards": 42.128,
+      "smoothed_est_start_yardline100": 52.4909,
+      "smoothed_est_net_yards": 41.9619
+    }
+  ],
+  "current_wp_calibration": {
+    "model_type": "current_wp_calibration_v1",
+    "generated_at": "2026-04-11 19:45:00 UTC",
+    "coefficients": {
+      "(Intercept)": -3.9108,
+      "raw_logit": 4.585,
+      "score_diff": -1.2439,
+      "score_diff_sq": 0.0006,
+      "time_frac": 3.3323,
+      "yardline_100": 0.0595,
+      "yardline_sq": 0,
+      "ydstogo": 0.0537,
+      "ydstogo_sq": -0.0008,
+      "posteam_spread": 0.0766,
+      "total_line": 0.0001,
+      "score_diff_x_time": 1.266,
+      "yardline_x_time": -0.0269
+    },
+    "training_metrics": {
+      "rows": 17385,
+      "mae": 0.0309,
+      "rmse": 0.0412
+    }
+  }
+}

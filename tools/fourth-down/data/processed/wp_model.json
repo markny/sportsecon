@@ -1,0 +1,43 @@
+{
+  "model_type": "parametric_logit_v1",
+  "generated_at": "2026-04-11 17:00:00 UTC",
+  "defaults": {
+    "posteam_spread": 0,
+    "total_line": 45
+  },
+  "coefficients": {
+    "(Intercept)": 1.3207,
+    "down_2": -0.0918,
+    "down_3": -0.1548,
+    "down_4": -0.3779,
+    "ydstogo": -0.0135,
+    "ydstogo_sq": 0.0003,
+    "score_diff": 0.3406,
+    "score_diff_sq": -0.0001,
+    "time_frac": -0.9289,
+    "time_frac_sq": 0.1972,
+    "yardline_100": -0.0164,
+    "yardline_sq": 0,
+    "posteam_spread": 0.0016,
+    "posteam_spread_sq": 0,
+    "posteam_total": 0.0115,
+    "posteam_total_sq": -0.0002,
+    "score_diff_x_time": -0.3422,
+    "yardline_x_time": 0.0075,
+    "spread_x_time": 0.0103,
+    "total_x_time": -0.0057,
+    "score_diff_x_spread": -0,
+    "down4_x_ydstogo": -0.0015,
+    "down3_x_ydstogo": -0.0046
+  },
+  "training_metrics": {
+    "rows": 229229,
+    "mae": 0.0436,
+    "rmse": 0.058
+  },
+  "training_window": {
+    "seasons": [2020, 2021, 2022, 2023, 2024, 2025],
+    "sampled_rows_per_season": 40000,
+    "target": "nflverse_wp_general_states"
+  }
+}
